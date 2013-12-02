@@ -14,7 +14,7 @@ namespace Payroll.DataAccess.Security
             SecurityDataContext context = new SecurityDataContext();
             var account = context.Accounts.Where(x => x.UserName == userName && x.Password == password);
 
-            return account != null;
+            return account.Count() > 0;
 
         }
         public void CreateAccount(Account entity)
