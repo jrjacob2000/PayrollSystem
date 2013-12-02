@@ -70,6 +70,7 @@
     <Content Include="Pages\Administration\ReferenceManagement\Default.aspx" />
     <Content Include="Pages\Administration\ReferenceManagement\View.aspx" />
     <Content Include="Pages\Public\Login.aspx" />
+    <Content Include="App_Themes\default\skin1.skin" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Pages\Public\UnAuthorized.aspx" />
     <Content Include="Resources\Images\Error.jpg" />

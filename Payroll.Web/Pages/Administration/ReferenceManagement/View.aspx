@@ -8,7 +8,7 @@
                 <asp:Label ID="lblRefCode" Text ="Code:" runat ="server"/>
             </th>
             <td>
-                 <asp:Label ID="lblRefCodeValue" Text ="Code:" runat ="server"/>
+                 <asp:Label  CssClass="readOnly"  ID="lblRefCodeValue"  runat ="server"/>
             </td>
         </tr>
         <tr>
@@ -16,7 +16,7 @@
                 <asp:Label ID="lblRefDesc" Text ="Description:" runat ="server"/>
             </th>
             <td>
-                <asp:Label ID="lblRefDescValue" Text ="Description:" runat ="server"/>
+                <asp:Label CssClass="readOnly" ID="lblRefDescValue" Text ="Description:" runat ="server"/>
             </td>
         </tr>
          <tr>

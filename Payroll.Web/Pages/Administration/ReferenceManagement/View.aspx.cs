@@ -46,8 +46,9 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
             DataAccess.Security.DReferences refData = new DataAccess.Security.DReferences();
 
             var refEntity = refData.GetReferenceById(new Guid(this.Id));
-                        
-            lblRefCode.Text = refEntity.ReferenceCode;
+            
+            //lblRefCode.Text = refEntity.ReferenceCode;
+            lblRefCodeValue.Text = refEntity.ReferenceCode;
             lblRefDescValue.Text = refEntity.ReferenceValue;
 
         }
