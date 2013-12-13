@@ -10,6 +10,19 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
 {
     public partial class Default : BasePage
     {
+        List<Reference> _data;
+        private List<Reference> Data
+        {
+            get {
+                if (_data == null)
+                {
+                    _data = new DataAccess.Security.DReferences().GetReferenceList();
+                    return _data;
+                }
+                else
+                    return _data;
+            }
+        }
         protected void Page_Load(object sender, EventArgs e)
         {
             lbCreate.Click += lbCreate_Click;
@@ -35,17 +48,41 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
 
         private void Bind()
         {
-            var refList = new DataAccess.Security.DReferences().GetReferenceList();
+            var dataTypes = new DataAccess.Security.DReferences().GetReferenceTypeList();
 
-            grdRoles.DataSource = refList.OrderBy(x => x.ReferenceTypeCode); ;
-            grdRoles.DataBind();
+            grdReference.DataSource = dataTypes;
+            grdReference.DataBind();
         }
 
-        protected void grdRoles_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void gvDetails_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             var item = (Guid)e.Keys["Id"];
             DataAccess.Security.DReferences service = new DataAccess.Security.DReferences();
             service.DeleteReference(item);
+            Bind();
+        }
+
+        protected void grdReference_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                string refTypeCode = grdReference.DataKeys[e.Row.RowIndex].Value.ToString();
+
+                GridView gvDetails = e.Row.FindControl("gvDetails") as GridView;
+                gvDetails.DataSource = Data.Where(x => x.ReferenceTypeCode == refTypeCode);
+                gvDetails.DataBind();
+            }
+        }
+
+        protected void gvDetails_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+
+            GridView gvDetails = (GridView)sender;
+
+            var item = gvDetails.Rows[e.NewEditIndex];
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/Create.aspx?id=" + item.Cells[0].Text);
+            //DataAccess.Security.DReferences service = new DataAccess.Security.DReferences();
+            //service.DeleteReference(item);
             Bind();
         }
     }

@@ -49,5 +49,11 @@ namespace Payroll.DataAccess.Security
             SecurityDataContext context = new SecurityDataContext();
             return context.References.Where(x => x.IsDeleted == false || x.IsDeleted == null).ToList();
         }
+
+        public List<ReferenceType> GetReferenceTypeList()
+        {
+            SecurityDataContext context = new SecurityDataContext();
+            return context.ReferenceTypes.Where(x => x.IsDeleted == false || x.IsDeleted == null).ToList();
+        }
     }
 }

@@ -635,6 +635,9 @@ tr.pager td {
     padding-right:5px;
 }
 
+.displayNone {
+       display:none;
+}
 /*Page Message*/
 .successMessage {
         background-image:url(/Resources/Images/success.jpg);

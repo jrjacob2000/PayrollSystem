@@ -75,6 +75,8 @@
     <Content Include="Pages\Public\UnAuthorized.aspx" />
     <Content Include="Resources\Images\Error.jpg" />
     <Content Include="Resources\Images\info.jpg" />
+    <Content Include="Resources\Images\minus.jpg" />
+    <Content Include="Resources\Images\plus.jpg" />
     <Content Include="Resources\Images\success.jpg" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />

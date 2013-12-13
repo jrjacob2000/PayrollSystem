@@ -42,6 +42,9 @@ namespace Payroll.DataAccess
     partial void InsertAccountHasRole(AccountHasRole instance);
     partial void UpdateAccountHasRole(AccountHasRole instance);
     partial void DeleteAccountHasRole(AccountHasRole instance);
+    partial void InsertReferenceType(ReferenceType instance);
+    partial void UpdateReferenceType(ReferenceType instance);
+    partial void DeleteReferenceType(ReferenceType instance);
     #endregion
 		
 		public SecurityDataContext() : 
@@ -113,6 +116,14 @@ namespace Payroll.DataAccess
 				return this.GetTable<AccountHasRole>();
 			}
 		}
+		
+		public System.Data.Linq.Table<ReferenceType> ReferenceTypes
+		{
+			get
+			{
+				return this.GetTable<ReferenceType>();
+			}
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RoleCanPerform")]
@@ -178,6 +189,8 @@ namespace Payroll.DataAccess
 		
 		private System.Nullable<bool> _IsDeleted;
 		
+		private EntityRef<ReferenceType> _ReferenceType;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -198,6 +211,7 @@ namespace Payroll.DataAccess
 		
 		public Reference()
 		{
+			this._ReferenceType = default(EntityRef<ReferenceType>);
 			OnCreated();
 		}
 		
@@ -232,6 +246,10 @@ namespace Payroll.DataAccess
 			{
 				if ((this._ReferenceTypeCode != value))
 				{
+					if (this._ReferenceType.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
 					this.OnReferenceTypeCodeChanging(value);
 					this.SendPropertyChanging();
 					this._ReferenceTypeCode = value;
@@ -317,6 +335,40 @@ namespace Payroll.DataAccess
 					this._IsDeleted = value;
 					this.SendPropertyChanged("IsDeleted");
 					this.OnIsDeletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ReferenceType_Reference", Storage="_ReferenceType", ThisKey="ReferenceTypeCode", OtherKey="ReferenceTypeCode", IsForeignKey=true)]
+		public ReferenceType ReferenceType
+		{
+			get
+			{
+				return this._ReferenceType.Entity;
+			}
+			set
+			{
+				ReferenceType previousValue = this._ReferenceType.Entity;
+				if (((previousValue != value) 
+							|| (this._ReferenceType.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._ReferenceType.Entity = null;
+						previousValue.References.Remove(this);
+					}
+					this._ReferenceType.Entity = value;
+					if ((value != null))
+					{
+						value.References.Add(this);
+						this._ReferenceTypeCode = value.ReferenceTypeCode;
+					}
+					else
+					{
+						this._ReferenceTypeCode = default(string);
+					}
+					this.SendPropertyChanged("ReferenceType");
 				}
 			}
 		}
@@ -885,6 +937,144 @@ namespace Payroll.DataAccess
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ReferenceType")]
+	public partial class ReferenceType : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ReferenceTypeCode;
+		
+		private string _Description;
+		
+		private bool _IsDeleted;
+		
+		private EntitySet<Reference> _References;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnReferenceTypeCodeChanging(string value);
+    partial void OnReferenceTypeCodeChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnIsDeletedChanging(bool value);
+    partial void OnIsDeletedChanged();
+    #endregion
+		
+		public ReferenceType()
+		{
+			this._References = new EntitySet<Reference>(new Action<Reference>(this.attach_References), new Action<Reference>(this.detach_References));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReferenceTypeCode", DbType="NVarChar(250) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ReferenceTypeCode
+		{
+			get
+			{
+				return this._ReferenceTypeCode;
+			}
+			set
+			{
+				if ((this._ReferenceTypeCode != value))
+				{
+					this.OnReferenceTypeCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ReferenceTypeCode = value;
+					this.SendPropertyChanged("ReferenceTypeCode");
+					this.OnReferenceTypeCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(250)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDeleted", DbType="Bit NOT NULL")]
+		public bool IsDeleted
+		{
+			get
+			{
+				return this._IsDeleted;
+			}
+			set
+			{
+				if ((this._IsDeleted != value))
+				{
+					this.OnIsDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._IsDeleted = value;
+					this.SendPropertyChanged("IsDeleted");
+					this.OnIsDeletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="ReferenceType_Reference", Storage="_References", ThisKey="ReferenceTypeCode", OtherKey="ReferenceTypeCode")]
+		public EntitySet<Reference> References
+		{
+			get
+			{
+				return this._References;
+			}
+			set
+			{
+				this._References.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_References(Reference entity)
+		{
+			this.SendPropertyChanging();
+			entity.ReferenceType = this;
+		}
+		
+		private void detach_References(Reference entity)
+		{
+			this.SendPropertyChanging();
+			entity.ReferenceType = null;
 		}
 	}
 }
