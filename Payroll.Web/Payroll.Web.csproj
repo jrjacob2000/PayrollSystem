@@ -69,6 +69,7 @@
     <Content Include="Pages\Administration\ReferenceManagement\Create.aspx" />
     <Content Include="Pages\Administration\ReferenceManagement\Default.aspx" />
     <Content Include="Pages\Administration\ReferenceManagement\View.aspx" />
+    <Content Include="Pages\Employee\Create.aspx" />
     <Content Include="Pages\Public\Login.aspx" />
     <Content Include="App_Themes\default\skin1.skin" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -174,6 +175,13 @@
     </Compile>
     <Compile Include="Pages\Administration\ReferenceManagement\View.aspx.designer.cs">
       <DependentUpon>View.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Employee\Create.aspx.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Employee\Create.aspx.designer.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Public\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

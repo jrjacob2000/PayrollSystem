@@ -59,18 +59,20 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
 
         void InitializeControl()
         {
-            var data = RerenceList.Where(x => x.ReferenceTypeCode == "REFERENCE_TYPE").Select(x => new ListItem(x.ReferenceValue, x.ReferenceCode)).ToList();
-            ddlReferenceType.DataSource = data;
-            ddlReferenceType.DataTextField = "Text";
-            ddlReferenceType.DataValueField = "Value";
+            //var data = RerenceTypeList.Where(x => x.ReferenceTypeCode == "REFERENCE_TYPE").Select(x => new ListItem(x.ReferenceValue, x.ReferenceCode)).ToList();
+            ddlReferenceType.DataSource = RerenceTypeList;
+            ddlReferenceType.DataTextField = "Description";
+            ddlReferenceType.DataValueField = "ReferenceTypeCode";
             ddlReferenceType.DataBind();
+
+            ddlReferenceType.Items.Insert(0,new ListItem("",""));
         }
 
-        List<Reference> RerenceList
+        List<ReferenceType> RerenceTypeList
         {
             get { 
                 Payroll.DataAccess.Security.DReferences service = new DataAccess.Security.DReferences();
-                return service.GetReferenceList();
+                return service.GetReferenceTypeList();
             }
         }
     }

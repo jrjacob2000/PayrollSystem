@@ -11,10 +11,18 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            grdAccounts.RowEditing += grdAccounts_RowEditing;
             lbCreate.Click += lbCreate_Click;
 
             if (!IsPostBack)
                 BindGrid();
+        }
+
+        void grdAccounts_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            var item = grdAccounts.SelectedDataKey;
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/update.aspx?id=" + item.ToString());
+           
         }
 
         void lbCreate_Click(object sender, EventArgs e)

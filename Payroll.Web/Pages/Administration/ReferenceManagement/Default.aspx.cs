@@ -80,7 +80,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
             GridView gvDetails = (GridView)sender;
 
             var item = gvDetails.Rows[e.NewEditIndex];
-            Response.Redirect("~/Pages/Administration/ReferenceManagement/Create.aspx?id=" + item.Cells[0].Text);
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/update.aspx?id=" + item.Cells[0].Text);
             //DataAccess.Security.DReferences service = new DataAccess.Security.DReferences();
             //service.DeleteReference(item);
             Bind();

@@ -23,8 +23,14 @@ namespace Payroll.Web
         if (new Operations.ViewHome().IsAuthorized())
         {
             NavigationNode Administrator = result.Add("Home", "/Default.aspx");
-
         }
+
+        if (new Operations.ViewEmployee().IsAuthorized())
+        {
+            NavigationNode Employee = result.Add("Employee");
+            Employee.Add("New Employee", "/Pages/Employee/Create.aspx");            
+        }
+       
 
         // Administration
         if (new Operations.ManageReferencesSecurity().IsAuthorized())

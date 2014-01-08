@@ -23,12 +23,12 @@
                     <ItemTemplate>
                         <img alt = "" style="cursor: pointer" src="../../../Resources/Images/plus.jpg" />
                         <asp:Panel ID="pnlDetails" runat="server" Style="display: none">
-                             <asp:GridView ID="gvDetails" Width="100%" runat="server" AutoGenerateColumns="false" OnRowEditing="gvDetails_RowEditing" OnRowDeleting="gvDetails_RowDeleting" DataKeyNames ="Id">
+                             <asp:GridView ID="gvDetails" Width="100%" runat="server" AutoGenerateColumns="false" OnRowEditing="gvDetails_RowEditing" OnRowDeleting="gvDetails_RowDeleting" DataKeyNames ="Id" EmptyDataText ="No data available">
                                  <Columns>                                    
-                                     <asp:BoundField  ItemStyle-Width ="700px" DataField ="Id"  ItemStyle-CssClass="displayNone"  HeaderText ="Id"/>
+                                     <asp:BoundField  ItemStyle-Width ="700px" DataField ="Id"  ItemStyle-CssClass="displayNone" HeaderStyle-CssClass="displayNone"  HeaderText ="Id"/>
                                     <%--<asp:HyperLinkField DataTextField ="ReferenceTypeCode" HeaderText ="Reference Type" DataNavigateUrlFormatString="~/Pages/Administration/ReferenceManagement/view.aspx?id={0}"  DataNavigateUrlFields="id" />--%>
                                     <asp:BoundField  ItemStyle-Width ="700px" DataField ="ReferenceValue" HeaderText ="Description"/>
-                                    <asp:CommandField ItemStyle-Width ="30px"  DeleteText ="Delete" ShowDeleteButton ="true" ShowEditButton="true" />
+                                    <asp:CommandField ItemStyle-Width ="30px"  DeleteText ="Delete" ShowDeleteButton ="true" ShowEditButton="true" HeaderText ="Action" />
                                      
                                  </Columns>
                               </asp:GridView>

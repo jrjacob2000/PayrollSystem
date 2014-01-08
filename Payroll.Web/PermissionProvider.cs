@@ -24,6 +24,14 @@ namespace Payroll.Web
             }
         }
 
+        public class ViewEmployee : Operation
+        {
+            public override string Description
+            {
+                get { return "Employee"; }
+            }
+        }
+
         //public class EditLab : SGSOperation
         //{
         //    public Guid? LaboratoryId { get; set; }

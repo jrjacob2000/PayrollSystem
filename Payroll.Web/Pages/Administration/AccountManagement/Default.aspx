@@ -9,6 +9,7 @@
                 <asp:BoundField HeaderText ="User Name" DataField="UserName" />
                 <asp:BoundField HeaderText ="Email" DataField="Email" />
                 <asp:BoundField HeaderText ="Deleted" DataField="IsDeleted" />
+                <asp:CommandField ButtonType ="Link" ShowEditButton="true" />
             </Columns>
         </asp:GridView>
     </div>

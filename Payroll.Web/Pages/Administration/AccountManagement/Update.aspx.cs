@@ -9,9 +9,17 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
 {
     public partial class Update : System.Web.UI.Page
     {
+        private string Id
+        {
+            get
+            {
+                return Request.QueryString["Id"].ToString();
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
