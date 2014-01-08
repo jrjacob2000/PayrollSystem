@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Payroll.Web.Site" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Payroll.Web.Site" %>
 
 <%@ Register Src="~/Controls/MainHorizonalSiteMapConcreate.ascx" TagPrefix="uc1" TagName="MainHorizonalSiteMapConcreate" %>
 
@@ -41,7 +41,8 @@
             <div class="content-wrapper">
                 <div class="float-left">
                     <p class="site-title">
-                        <a id="A1" runat="server" href="~/">Netsoft Technology - Payroll System</a>
+                        <%--<a id="A1" runat="server" href="~/">Netsoft Technology - Payroll System</a>--%>
+                        <a id="A1" runat="server" href="~/">Test</a>
                     </p>
                 </div>
                 <div class="float-right">
@@ -96,7 +97,7 @@
                     <asp:Literal ID="lblMessage" runat="server"></asp:Literal>
                 </div>
             </section>
-            <section style="padding-left:75px" class="content-wrapper main-content clear-fix">
+            <section style="padding-left:50px" class="content-wrapper main-content clear-fix">
                 <asp:ContentPlaceHolder runat="server" ID="MainContent" />
             </section>
         </div>
