@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -63,7 +63,7 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
                     acctEntity.ProfileId = profileEntity.Id;
                     daAccount.CreateAccount(acctEntity);
                     daAccount.AddRoles(acctEntity.Id, roleCode);
-                    SetMessage(MessageType.Succes, "Saving Successfull");
+                    SetMessage(MessageType.Succes, "Saving Successfull",true);
                 }
                 catch (System.Transactions.TransactionAbortedException ex)
                 {
@@ -73,8 +73,8 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
                 {
                     SetMessage(MessageType.Error, ex.Message);
                 }
-           
 
+                RedirectToReferrerUrl();
 
             //daProfile.DeleteAccountProfile(profId.Value, false);
             //throw (ex);
@@ -87,8 +87,8 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
             var roleList = data.GetReferenceList().Where(x => x.ReferenceTypeCode == "ROLE" && (x.IsDeleted.HasValue? x.IsDeleted.Value : false)== false );
 
             chkRoles.DataSource = roleList;
-            chkRoles.DataTextField = "ReferenceCode";
-            chkRoles.DataValueField = "ReferenceValue";
+            chkRoles.DataTextField = "ReferenceValue";  
+            chkRoles.DataValueField = "ReferenceCode";
             chkRoles.DataBind();
 
 
