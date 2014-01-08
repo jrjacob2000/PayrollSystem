@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +30,15 @@ namespace Payroll.DataAccess.Security
             SecurityDataContext context = new SecurityDataContext();
             return context.Accounts.ToList();
         }
+
+        public Account Get(Guid Id)
+        {
+            SecurityDataContext context = new SecurityDataContext();
+            var result = context.Accounts.Single(x => x.Id == Id);
+                        
+            return result;
+        }
+
 
         public void ChangePassword(Guid accountId, string newPassword)
         {
@@ -93,12 +102,12 @@ namespace Payroll.DataAccess.Security
                     AccountId = accountId,
                     RoleCode = roleCode
                 };
-                context.AccountHasRoles.Attach(ahr);
+                context.AccountHasRoles.InsertOnSubmit(ahr);
             }
             context.SubmitChanges();
         }
 
-        private void DeleteRoles(Guid accountId)
+        public void DeleteRoles(Guid accountId)
         {
             try
             {
@@ -116,7 +125,7 @@ namespace Payroll.DataAccess.Security
             }
         }
 
-        private List<Role> GetRoles(Guid accountId)
+        public List<Role> GetRoles(Guid accountId)
         {
             List<Role> result = new List<Role>();
             SecurityDataContext context = new SecurityDataContext();
