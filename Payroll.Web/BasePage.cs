@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -55,7 +55,11 @@ namespace System.Web
         protected override void OnLoad(EventArgs e)
         {
             base.OnLoad(e);
-            ManagePersistenMessage();
+            if (!IsPostBack)
+            {
+                SaveReferrerUrl();
+                ManagePersistenMessage();
+            }
         } 
 
         public virtual Operation SecurityContext
@@ -87,10 +91,10 @@ namespace System.Web
 
         internal bool IsOperationAuthorized(Operation operation)
         {
-            foreach (IPermissionProvider permissionProvider in this.CurrentApplication().PermissionProviders)
-            {
-                if (!permissionProvider.IsOperationAuthorized(operation)) return false;
-            }
+            //foreach (IPermissionProvider permissionProvider in this.CurrentApplication().PermissionProviders)
+            //{
+            //    if (!permissionProvider.IsOperationAuthorized(operation)) return false;
+            //}
             return true;
         }
 
@@ -162,7 +166,44 @@ namespace System.Web
 
             PageMessage = msg;
         }
-                      
+
+        private void SaveReferrerUrl()
+        {
+            if (Request.UrlReferrer != null)
+            {
+                ReferrerUrl = Request.UrlReferrer.ToString();
+            }
+        }
+
+        protected void RedirectToReferrerUrl()
+        {
+            Response.Redirect(ReferrerUrl, false);
+        }
+
+        protected string ReferrerUrl
+        {
+            get { return GetProperty<string>("ReferrerUrl", string.Empty); }
+            private set { SetProperty("ReferrerUrl", value); }
+        }
+
+        protected T GetProperty<T>(string propertyName, T defaultValue)
+        {
+            if (ViewState[propertyName] == null)
+            {
+                return defaultValue;
+            }
+            return (T)ViewState[propertyName];
+        }
+
+        protected T GetProperty<T>(string propertyName)
+        {
+            return GetProperty<T>(propertyName, default(T));
+        }
+
+        protected void SetProperty(string propertyName, object value)
+        {
+            ViewState[propertyName] = value;
+        }
     }
 
     public enum MessageType
