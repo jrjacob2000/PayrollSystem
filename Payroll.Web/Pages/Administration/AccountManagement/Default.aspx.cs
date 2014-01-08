@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,19 +11,25 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            grdAccounts.RowEditing += grdAccounts_RowEditing;
+            //grdAccounts.RowEditing += grdAccounts_RowEditing;
+            grdAccounts.RowCommand += new GridViewCommandEventHandler(grdAccounts_RowCommand);
             lbCreate.Click += lbCreate_Click;
 
             if (!IsPostBack)
                 BindGrid();
         }
 
-        void grdAccounts_RowEditing(object sender, GridViewEditEventArgs e)
+        void grdAccounts_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            var item = grdAccounts.SelectedDataKey;
-            Response.Redirect("~/Pages/Administration/ReferenceManagement/update.aspx?id=" + item.ToString());
-           
+            if (e.CommandName == "Edit")
+            {
+                int rowindex = Convert.ToInt32(e.CommandArgument);
+                string id = grdAccounts.DataKeys[rowindex].Value.ToString();
+
+                Response.Redirect("~/Pages/Administration/AccountManagement/update.aspx?id=" + id);
+            }
         }
+
 
         void lbCreate_Click(object sender, EventArgs e)
         {
