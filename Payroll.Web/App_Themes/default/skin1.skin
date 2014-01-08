@@ -1,4 +1,4 @@
-﻿<%--
+<%--
 Default skin template. The following skins are provided as examples only.
 
 1. Named control skin. The SkinId should be uniquely defined because
@@ -16,7 +16,7 @@ Default skin template. The following skins are provided as examples only.
 
  <asp:GridView runat="server" AutoGenerateColumns="False" AllowCustomPaging="True" >
             <AlternatingRowStyle BackColor="#CCCCFF" />
-            <HeaderStyle BackColor="#313131" Font-Bold="True" Font-Overline="False" ForeColor="#FFFFCC" />
-            <RowStyle width="200px" />
-            
+            <HeaderStyle BackColor="#313131" Font-Bold="True" Font-Overline="False" ForeColor="#FCFCF8" />
+            <RowStyle width="200px" />            
         </asp:GridView>
+<asp:RequiredFieldValidator  runat="server" ForeColor="Red" ></asp:RequiredFieldValidator>
