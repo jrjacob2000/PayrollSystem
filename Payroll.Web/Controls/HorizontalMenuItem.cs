@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -52,9 +52,9 @@ namespace Payroll.Web.Controls
             // <li>
             htmlTextWriter.RenderBeginTag(HtmlTextWriterTag.Li);
             // <span>
-            //htmlTextWriter.RenderBeginTag(HtmlTextWriterTag.Span);
-            htmlTextWriter.AddAttribute(HtmlTextWriterAttribute.Href, "/");
-            htmlTextWriter.RenderBeginTag(HtmlTextWriterTag.A);
+            htmlTextWriter.RenderBeginTag(HtmlTextWriterTag.Span);
+            //htmlTextWriter.AddAttribute(HtmlTextWriterAttribute.Href, "/");
+            //htmlTextWriter.RenderBeginTag(HtmlTextWriterTag.A);
 
             // Text
             htmlTextWriter.Write(Text);
