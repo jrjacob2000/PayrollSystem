@@ -45,12 +45,11 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
 
             var roles = daAccount.GetRoles(Id);
 
-            foreach (Role role in roles)
+           
+            foreach (ListItem item in chkRoles.Items)
             {
-                foreach (ListItem item in chkRoles.Items)
-                {
-                    item.Selected = item.Value == role.Code;
-                }
+                item.Selected = roles.Select(x => x.Code).ToList().Contains(item.Value);
+                                
             }
             
         }
