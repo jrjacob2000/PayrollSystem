@@ -9,7 +9,8 @@ body {
     border-top: solid 10px #000;
     color: #333;
     font-size: .85em;
-    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    font-family:Arial, Verdana;
+    /*font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;*/
     margin: 0;
     padding: 0;
 }
@@ -467,9 +468,8 @@ fieldset {
         border: 1px solid #e2e2e2;
         background: #fff;
         color: #333;
-        /*font-size: 1.2em;
-        margin: 5px 0 6px 0;*/
-        padding: 5px;
+        /*font-size: 1.2em;*/
+        padding: 3px;
         width: 300px;
         
     }
@@ -574,7 +574,7 @@ table {
 }
 
 th {
-	font-size: 1.2em;
+	font-size: 1em;
     text-align: left;
     border: none 0px;
     padding-left: 0;
@@ -621,6 +621,8 @@ th {
 
 td {
     /*padding: 0.25em 2em 0.25em 0em;*/
+    padding-top :3px;
+    padding-bottom :3px;
     border: 0 none;
 }
 

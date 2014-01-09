@@ -4,8 +4,8 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div style="font-size: 20px">
-        User Profile
+    <div >
+        <h3>User Profile</h3>        
     </div>
     <table>
         <tr>
@@ -53,8 +53,9 @@
             </td>
         </tr>
     </table>
-    <div style="font-size: 20px">
-        Account Info
+    <div >
+        <h3>Account Info</h3>
+        
     </div>
     <table>
         <tr>
@@ -74,8 +75,9 @@
             </td>
         </tr>
     </table>
-    <div style="font-size: 20px">
-        Roles
+    <div >
+        <h3>Roles</h3>
+        
     </div>
     <div>
         <asp:CheckBoxList ID="chkRoles" CssClass="CheckboxList" runat="server" Height="16px">
