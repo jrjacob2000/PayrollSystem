@@ -8,8 +8,8 @@ body {
     background-color: #fff;
     border-top: solid 10px #000;
     color: #333;
-    font-size: .85em;
-    font-family:Arial, Verdana;
+    font-size: 11px;
+    font-family:Arial, Verdana, Sans-Serif;
     /*font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;*/
     margin: 0;
     padding: 0;
@@ -61,7 +61,7 @@ mark {
 
 h1, h2, h3,
 h4, h5, h6 {
-    color: #000;
+    color: #3A464F;
     margin-bottom: 0;
     padding-bottom: 0;
 }
@@ -70,21 +70,47 @@ h1 {
     font-size: 2em;
 }
 
-h2 {
-    font-size: 1.4em;
+h2 
+{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	/*padding: 0px 5px;
+	border-left: 2px solid #FF7800;*/
+	font-size: 12px;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
-h3 {
-    font-size: 1.2em;
+h3
+{
+	margin-top: 12px;
+	margin-bottom: 4px;
+	padding: 0px 0px;
+	font-size: 11px;
+	text-transform: uppercase;
+	font-weight: bold;
 }
 
-h4 {
-    font-size: 1.1em;
+h4
+{
+	margin-top: 4px;
+	margin-bottom: 2px;
+	padding: 0px 0px;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FF6600;
 }
 
-h5, h6 {
+h5, h6
+{
+	margin-top: 4px;
+	margin-bottom: 2px;
+	padding: 0px 0px;
+	font-size: 10px;
+}
+/*h5, h6 {
     font-size: 1em;
-}
+}*/
 
     h5 a:link, h5 a:visited, h5 a:active {
         padding: 0;
@@ -203,10 +229,11 @@ nav{
  
 nav ul {
   font-family: Arial, Verdana;
-  font-size: 18px;
+  font-size: 15px;
   margin: 0;
   padding: 0;
   list-style: none;
+  font-weight :600;
 }
  
 nav ul li {
@@ -219,11 +246,11 @@ nav ul li {
 #menu li ul { 
   display: none; 
 }
- 
-#menu ul li a {
+
+#menu span {
   display: block;
   text-decoration: none;
-  padding: 5px 15px 0px 15px;
+  padding: 5px 20px 0px 10px;
   background: #2C5463;
   color: #ffffff;  
   margin-left: 1px;
@@ -231,12 +258,38 @@ nav ul li {
   height:25px; /* Width and height of top-level nav items */
   width:120px;
   text-align:center;
+  cursor: pointer;
+} 
+ 
+#menu ul li a {
+  display: block;
+  text-decoration: none;
+  padding: 5px 20px 0px 10px;
+  background: #2C5463;
+  color: #ffffff;  
+  margin-left: 1px;
+  white-space: nowrap;
+  height:17px; /* Width and height of top-level nav items */
+  width:200px;
+  text-align:center;
+ 
+}
+
+#menu ul li a:hover { 
+  background: #617F8A; 
  
 }
  
 #menu ul li a:hover { 
   background: #617F8A; 
+ 
 }
+
+#menu li:hover span{
+	display: block;
+	background: #617F8A;
+	width :120px;
+} 
  
 #menu li:hover ul {
   display: block;
@@ -247,13 +300,15 @@ nav ul li {
 #menu li:hover li {
   float: none;
   font-size: 12px;
- 
+  font-weight :normal;
 }
  
-#menu li:hover a { 
+#menu li:hover a  
+{
   background: #3A464F; 
-  height:25px; /* Height of lower-level nav items is shorter than main level */
+  height:20px; /* Height of lower-level nav items is shorter than main level */
 }
+ 
  
 #menu li:hover li a:hover { 
   background: #95A9B1; 
@@ -261,8 +316,9 @@ nav ul li {
  
 #menu ul li ul li a {
     text-align:left; /* Top-level items are centered, but nested list items are left-aligned */
-    padding-top : 7px;
-    padding-bottom:0px
+    padding-top : 5px;
+    padding-bottom:0px;
+
 }
  
 /* END NAV MENU */
@@ -296,6 +352,7 @@ nav ul li {
 /* page titles */
 hgroup.title {
     margin-bottom: 4px;
+    margin-top: 4px;
 }
 
 hgroup.title h1, hgroup.title h2 {
@@ -304,7 +361,19 @@ hgroup.title h1, hgroup.title h2 {
 
 hgroup.title h2 {
     font-weight: normal;
-    margin-left: 3px;
+    /*margin-left: 3px;*/
+    height: 17px;
+	/*width: 100%;*/
+	line-height: 16px;
+	/*background-color: #EEEFF1;*/
+	padding-top: 2px;
+	margin-top: 11px;
+	margin-bottom: 12px;
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: -1px;
+	line-height: 15px;
 }
 
 /* features */
@@ -464,13 +533,25 @@ fieldset {
         display: inline;
     }
 
-    input, textarea {
+	select 
+	{
+		height:18px;
+		width:180px;
+	}
+	input[type="text"],textarea
+	{
+		height :14px;
+		width: 180px;
+		}
+		
+    input, textarea,select {
         border: 1px solid #e2e2e2;
         background: #fff;
         color: #333;
-        /*font-size: 1.2em;*/
-        padding: 3px;
-        width: 300px;
+        font-size: 11px;        
+        word-spacing:normal;
+        letter-spacing:normal;
+        font-family :Arial;       
         
     }
 
@@ -566,15 +647,26 @@ input[type="checkbox"].input-validation-error {
 
 /* tables
 ----------------------------------------------------------*/
+.tableForm tbody th {
+padding: 0px 0px 2px 0px;
+width: 130px;
+font-weight: normal;
+}
+
+.tableForm th, .tableReadOnly th {
+padding: 0px 0px 2px 0px;
+text-align: left;
+}
+
 table {
     border-collapse: collapse;
-    border-spacing: 0;
+    border-spacing: 2px;
     /*margin-top: 0.75em;*/
     border: 0 none;
 }
 
 th {
-	font-size: 1em;
+        font-size: 1em;
     text-align: left;
     border: none 0px;
     padding-left: 0;
@@ -588,41 +680,40 @@ th {
         
     }
 
-	th a:link, th a:visited, th a:active, th a:hover {
-		color: #333;
-		font-weight: 600;
-		text-decoration: none;
+        th a:link, th a:visited, th a:active, th a:hover {
+                color: #333;
+                font-weight: 600;
+                text-decoration: none;
         padding: 0;
-	}
+        }
 
-	th a:hover {
-		color: #000;
-	}
+        th a:hover {
+                color: #000;
+        }
 
     th.asc a, th.desc a {
         margin-right: .75em;
     }
     
     th.asc a:after, th.desc a:after {
-		display: block;
+                display: block;
         position: absolute;
         right: 0em;
         top: 0;
         font-size: 0.75em;
-	}
+        }
 
-	th.asc a:after {
-		content: '▲';
-	}
+        th.asc a:after {
+                content: '▲';
+        }
 
-	th.desc a:after {
-		content: '▼';
-	}
+        th.desc a:after {
+                content: '▼';
+        }
 
 td {
-    /*padding: 0.25em 2em 0.25em 0em;*/
-    padding-top :3px;
-    padding-bottom :3px;
+    /*padding-top :3px;
+    padding-bottom :3px;*/
     border: 0 none;
 }
 
@@ -729,6 +820,7 @@ tr.pager td {
     header .site-title {
         margin: 10px;
         text-align: center;
+  
     }
 
     /* login */
@@ -882,6 +974,92 @@ tr.pager td {
         }    
 }
 /* END: Mobile Styles */
+
+/* GridView */
+.gridStyle th
+{
+	padding: 0px 2px 0px 2px;
+}
+
+.gridStyle tr
+{
+	width:100%;
+}
+.gridStyle td
+{
+	padding: 5px 2px 5px 2px;
+}
+
+.gridRowStyle 
+{ 
+	background-color:#F9F9F9;
+}
+
+.gridRowStyle a, .gridRowStyle a:visited, .gridRowStyle a:hover, .gridRowStyle a:active
+{ 
+	font-weight: bold;
+} 
+
+.gridAlternatingRowStyle a, .gridAlternatingRowStyle a:visited, .gridAlternatingRowStyle a:hover, .gridAlternatingRowStyle a:active
+{ 
+	font-weight: bold;
+} 
+
+.gridAlternatingRowStyle
+{ 
+	background-color: #FFFFFF;
+}
+
+.gridHeaderStyle
+{ 
+	background-color: #C9C9C9;
+	color: #000000;
+	font-size: 11px;
+} 
+
+.gridHeaderStyle th
+{
+	height: 18px;
+	font-weight: normal;
+	color: #000000;
+}
+
+.gridHeaderStyle a, .gridHeaderStyle a:visited, .gridHeaderStyle a:hover, .gridHeaderStyle a:active
+{ 
+	color: #000000;
+	font-weight: normal;
+}
+
+.gridFooterStyle
+{ 
+	background-color: #C9C9C9;
+	color: #000000;
+} 
+
+.gridFooterStyle a, .gridFooterStyle a:visited, .gridFooterStyle a:hover, .gridFooterStyle a:active
+{ 
+	color: #000000;
+} 
+
+.gridPagerStyle
+{ 
+	background-color:#C9C9C9;
+	color: #000000;
+	font-size: 11px;
+	text-align: center;
+}
+
+.gridPagerStyle td
+{
+	padding: 0px;
+	margin: 0px;
+}
+
+.gridPagerStyle a, .gridPagerStyle a:visited, .gridPagerStyle a:hover, .gridPagerStyle a:active
+{ 
+	font-weight: bold;
+	color: #000000;
+}
 
 .HeaderBackground
 { background-color:#313131}
