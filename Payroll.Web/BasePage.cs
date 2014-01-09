@@ -91,10 +91,10 @@ namespace System.Web
 
         internal bool IsOperationAuthorized(Operation operation)
         {
-            //foreach (IPermissionProvider permissionProvider in this.CurrentApplication().PermissionProviders)
-            //{
-            //    if (!permissionProvider.IsOperationAuthorized(operation)) return false;
-            //}
+            foreach (IPermissionProvider permissionProvider in this.CurrentApplication().PermissionProviders)
+            {
+                if (!permissionProvider.IsOperationAuthorized(operation)) return false;
+            }
             return true;
         }
 
