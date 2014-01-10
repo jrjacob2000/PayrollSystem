@@ -1,28 +1,30 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site_old.master.cs" Inherits="Payroll.Web.Site_old" %>
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="Payroll.Web.Site" %>
 
-<%@ Register Src="~/Controls/MainHorizonalSiteMapConcreate.ascx" TagPrefix="uc1" TagName="MainHorizonalSiteMapConcreate" %>
-
-
+<%@ Register Src="~/Controls/MainHorizonalSiteMapConcreate.ascx" TagPrefix="uc1"
+    TagName="MainHorizonalSiteMapConcreate" %>
 <!DOCTYPE html>
-<html lang="en">
-<head runat="server">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
     <meta charset="utf-8" />
-    <title><%: Page.Title %> - IntelliSoft Payroll System</title>
+    <title>
+        <%: Page.Title %>
+        - IntelliSoft Payroll System</title>
     <%--<asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
     <webopt:BundleReference runat="server" Path="~/Content/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />--%>
-    <link href="~/Styles/site.css" rel="stylesheet" type ="text/css" /> 
+    <link href="~/Styles/site.css" rel="stylesheet" type="text/css" />
+    <link href="~/Styles/OldMenu.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
 </head>
 <body>
-    <form runat="server">
-        <asp:ScriptManager runat="server">
-            <Scripts>
-                <%--Framework scripts--%>
-                 <%--<asp:ScriptReference Name="MsAjaxBundle" />
+    <form id="Form1" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+        <Scripts>
+            <%--Framework scripts--%>
+            <%--<asp:ScriptReference Name="MsAjaxBundle" />
                 <asp:ScriptReference Name="jquery" />
                 <asp:ScriptReference Name="jquery.ui.combined" />
                <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
@@ -34,19 +36,20 @@
                 <asp:ScriptReference Name="WebParts.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebParts.js" />
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
                 <asp:ScriptReference Name="WebFormsBundle" />--%>
-                <%--Site scripts--%>
-            </Scripts>
-        </asp:ScriptManager>
-        <header>
+            <%--Site scripts--%>
+        </Scripts>
+    </asp:ScriptManager>
+    <header>
             <div class="content-wrapper">
                 <div class="float-left">
                     <p class="site-title">
-                        <a runat="server" href="~/">Netsoft Technology - Payroll System</a>
+                        <%--<a id="A1" runat="server" href="~/">Netsoft Technology - Payroll System</a>--%>
+                        <a id="A1" runat="server" href="~/">Test</a>
                     </p>
                 </div>
                 <div class="float-right">
                     <section id="login">
-                        <asp:LoginView runat="server" ViewStateMode="Disabled">
+                        <asp:LoginView ID="LoginView1" runat="server" ViewStateMode="Disabled">
                             <AnonymousTemplate>
                                 <ul>
                                     <li><a id="registerLink" runat="server" href="~/Account/Register.aspx">Register</a></li>
@@ -55,10 +58,10 @@
                             </AnonymousTemplate>
                             <LoggedInTemplate>
                                 <p>
-                                    Hello, <a runat="server" class="username" href="~/Pages/Public/Manage.aspx" title="Manage your account">
-                                        <asp:LoginName runat="server" CssClass="username" />
+                                    Hello, <a id="A2" runat="server" class="username" href="~/Pages/Public/Manage.aspx" title="Manage your account">
+                                        <asp:LoginName ID="LoginName1" runat="server" CssClass="username" />
                                     </a>!
-                                <asp:LoginStatus runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Pages/Public/Login.aspx" />
+                                <asp:LoginStatus ID="LoginStatus1" runat="server" LogoutAction="Redirect" LogoutText="Log off" LogoutPageUrl="~/Pages/Public/Login.aspx" />
                                 </p>
                             </LoggedInTemplate>
                         </asp:LoginView>
@@ -69,36 +72,33 @@
             </div>
            
         </header>
-        <div id="body">
-            <%--<asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />--%>
-            <section class="featured">
+    <div>
+        <%--<asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />--%>
+        <section class="featured">
                 <uc1:MainHorizonalSiteMapConcreate runat="server" id="horizontalSiteMap" />
-             <%--<div class="menu-wrapper">
-                    <nav>
-                        <ul id="menu">
-                            <li><a id="A1" runat="server" href="~/">Home</a></li>
-                            <li><a id="A2" runat="server" href="~/About.aspx">Administration</a></li>
-                            <li><a id="A3" runat="server" href="~/Contact.aspx">Contact</a></li>
-                        </ul>
-                    </nav>
-               
-            </div>--%>
+
                 </section>
-            <section class="featured">
+        <section class="featured">
                 <div class="content-wrapper">
                     <hgroup class="title">
                         <h2><%: Page.Title %></h2>
                     </hgroup>
                 </div>
-                <div>
-
+            </section>
+        <section class="content-wrapper">
+                 <div id="divMessage" runat ="server" enableviewstate="false">
+                    <asp:Literal ID="lblMessage" runat="server"></asp:Literal>
                 </div>
             </section>
-            <section style="padding-left:75px" class="content-wrapper main-content clear-fix">
+        <section class="content-wrapper main-content clear-fix">
+            
+            <div id="body" >
                 <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+            </div>
+           
             </section>
-        </div>
-        <footer>
+    </div>
+    <footer>
             <div class="content-wrapper">
                 <div class="float-left">
                     <p>
