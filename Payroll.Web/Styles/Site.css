@@ -1,5 +1,5 @@
 html {
-    background-color: #e2e2e2;
+    /*background-color: #e2e2e2;*/
     margin: 0;
     padding: 0;
 }
@@ -28,9 +28,9 @@ a {
         color: #333;
     }
 
-    a:hover {
+    /*a:hover {
         background-color: #c7d1d6;
-    }
+    }*/
 
 header, footer, hgroup,
 nav, section {
@@ -144,13 +144,16 @@ h5, h6
 #body {
     background-color: #efeeef;
     clear: both;
-    padding-bottom: 35px;
+    padding:25px 0px 35px 25px;
+    border: solid 2px rgba(0,0,0,0.2);
+    border-radius:5px;
+    
 }
 
     .main-content {
         /*background: url("../Images/accent.png") no-repeat;*/
-         /*padding-left: 10px;*/
-       padding-top: 10px;
+         /*padding-left: 10px;
+       padding-top: 10px;*/
     }
 
     /*.featured + .main-content {
@@ -164,7 +167,7 @@ header .content-wrapper {
     
 footer {
     clear: both;
-    background-color: #e2e2e2;
+    /*background-color: #e2e2e2;*/
     font-size: .8em;
     height: 100px;
 }
@@ -220,108 +223,7 @@ footer {
     }
 
 
-/* START NAV MENU */
-nav{
-  background-color:#2C5463;
-  height:30px;
-}
- 
- 
-nav ul {
-  font-family: Arial, Verdana;
-  font-size: 15px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  font-weight :600;
-}
- 
-nav ul li {
-  display: block;
-  position: relative;
-  float: left;
- 
-}
- 
-#menu li ul { 
-  display: none; 
-}
 
-#menu span {
-  display: block;
-  text-decoration: none;
-  padding: 5px 20px 0px 10px;
-  background: #2C5463;
-  color: #ffffff;  
-  margin-left: 1px;
-  white-space: nowrap;
-  height:25px; /* Width and height of top-level nav items */
-  width:120px;
-  text-align:center;
-  cursor: pointer;
-} 
- 
-#menu ul li a {
-  display: block;
-  text-decoration: none;
-  padding: 5px 20px 0px 10px;
-  background: #2C5463;
-  color: #ffffff;  
-  margin-left: 1px;
-  white-space: nowrap;
-  height:17px; /* Width and height of top-level nav items */
-  width:200px;
-  text-align:center;
- 
-}
-
-#menu ul li a:hover { 
-  background: #617F8A; 
- 
-}
- 
-#menu ul li a:hover { 
-  background: #617F8A; 
- 
-}
-
-#menu li:hover span{
-	display: block;
-	background: #617F8A;
-	width :120px;
-} 
- 
-#menu li:hover ul {
-  display: block;
-  position: absolute;
-  height:20px;
-}
- 
-#menu li:hover li {
-  float: none;
-  font-size: 12px;
-  font-weight :normal;
-}
- 
-#menu li:hover a  
-{
-  background: #3A464F; 
-  height:20px; /* Height of lower-level nav items is shorter than main level */
-}
- 
- 
-#menu li:hover li a:hover { 
-  background: #95A9B1; 
-}
- 
-#menu ul li ul li a {
-    text-align:left; /* Top-level items are centered, but nested list items are left-aligned */
-    padding-top : 5px;
-    padding-bottom:0px;
-
-}
- 
-/* END NAV MENU */
 
 
 /* page elements
@@ -538,7 +440,7 @@ fieldset {
 		height:18px;
 		width:180px;
 	}
-	input[type="text"],textarea
+	input[type="text"],textarea,input[type="password"]
 	{
 		height :14px;
 		width: 180px;
@@ -793,7 +695,7 @@ tr.pager td {
 .Wizard {
     border-width : 0px;
     border-color :black;
-    width:500px;
+    width:400px;
 }
    
 .CheckboxList {
