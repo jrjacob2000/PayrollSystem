@@ -23,7 +23,7 @@ Go
 insert into dbo.Reference
 select newid(),'ROLE',	'Administrator',	'Administrators',null,null
 union
-select newid(),'OPERATION',	'MANAGEREFERENCESSECURITY',	'Manage Reference Security',null,null
+select newid(),'OPERATION',	'Operations.ManageReferencesSecurity',	'Manage Reference Security',null,null
 union
 select newid(),'ROLE',	'EMPLOYEE',	'Employee',null,null
 union

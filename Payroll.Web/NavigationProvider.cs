@@ -37,7 +37,10 @@ namespace Payroll.Web
         {
             NavigationNode Administrator = result.Add("Administrator");
             Administrator.Add("Reference Management", "~/Pages/Administration/ReferenceManagement/Default.aspx");
-            Administrator.Add("Accounts Management", "~/Pages/Administration/AccountManagement/Default.aspx");
+
+            NavigationNode secMgmt = Administrator.Add("Security Management", string.Empty);
+            secMgmt.Add("User Management", "~/Pages/Administration/AccountManagement/Default.aspx");
+            secMgmt.Add("Role Management", "~/Pages/Administration/RoleManagement/Default.aspx");
 
                              
                  

@@ -5,12 +5,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div style="width: 200px">
-        <asp:Wizard ID="wzdAccount" CssClass="Wizard" runat="server" DisplaySideBar="False">
+        <asp:Wizard ID="wzdAccount" CssClass="Wizard" runat="server" DisplaySideBar="False" DisplayCancelButton="true">
             <WizardSteps>
                 <asp:WizardStep ID="WizardStep1" runat="server" Title="Profile Creation">
-                    <div style="font-size: 20px;">
+                    <h2>
                         User Profile
-                    </div>
+                    </h2>
                     <table>
                         <tr>
                             <th>
@@ -69,9 +69,9 @@
                     </table>
                 </asp:WizardStep>
                 <asp:WizardStep ID="WizardStep2" runat="server" Title="Account Creation">
-                    <div style="font-size: 20px;">
+                    <h2>
                         User Account
-                    </div>
+                    </h2>
                     <table>
                         <tr>
                             <th>
@@ -116,9 +116,9 @@
                     </table>
                 </asp:WizardStep>
                 <asp:WizardStep ID="WizardStep3" runat="server" Title="Roles">
-                    <div style="font-size: 20px;">
+                    <h2>
                         User Roles
-                    </div>
+                    </h2>
                     <div style="padding-left: 15px">
                         <asp:CheckBoxList ID="chkRoles" CssClass="CheckboxList" runat="server" Height="16px">
                         </asp:CheckBoxList>

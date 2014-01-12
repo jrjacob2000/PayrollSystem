@@ -45,6 +45,9 @@ namespace Payroll.DataAccess
     partial void InsertReferenceType(ReferenceType instance);
     partial void UpdateReferenceType(ReferenceType instance);
     partial void DeleteReferenceType(ReferenceType instance);
+    partial void InsertRoleCanPerform(RoleCanPerform instance);
+    partial void UpdateRoleCanPerform(RoleCanPerform instance);
+    partial void DeleteRoleCanPerform(RoleCanPerform instance);
     #endregion
 		
 		public SecurityDataContext() : 
@@ -75,14 +78,6 @@ namespace Payroll.DataAccess
 				base(connection, mappingSource)
 		{
 			OnCreated();
-		}
-		
-		public System.Data.Linq.Table<RoleCanPerform> RoleCanPerforms
-		{
-			get
-			{
-				return this.GetTable<RoleCanPerform>();
-			}
 		}
 		
 		public System.Data.Linq.Table<Reference> References
@@ -124,49 +119,12 @@ namespace Payroll.DataAccess
 				return this.GetTable<ReferenceType>();
 			}
 		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RoleCanPerform")]
-	public partial class RoleCanPerform
-	{
 		
-		private string _RoleCode;
-		
-		private string _OperationCode;
-		
-		public RoleCanPerform()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleCode", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
-		public string RoleCode
+		public System.Data.Linq.Table<RoleCanPerform> RoleCanPerforms
 		{
 			get
 			{
-				return this._RoleCode;
-			}
-			set
-			{
-				if ((this._RoleCode != value))
-				{
-					this._RoleCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OperationCode", DbType="NVarChar(250) NOT NULL", CanBeNull=false)]
-		public string OperationCode
-		{
-			get
-			{
-				return this._OperationCode;
-			}
-			set
-			{
-				if ((this._OperationCode != value))
-				{
-					this._OperationCode = value;
-				}
+				return this.GetTable<RoleCanPerform>();
 			}
 		}
 	}
@@ -1075,6 +1033,92 @@ namespace Payroll.DataAccess
 		{
 			this.SendPropertyChanging();
 			entity.ReferenceType = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.RoleCanPerform")]
+	public partial class RoleCanPerform : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _RoleCode;
+		
+		private string _OperationCode;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRoleCodeChanging(string value);
+    partial void OnRoleCodeChanged();
+    partial void OnOperationCodeChanging(string value);
+    partial void OnOperationCodeChanged();
+    #endregion
+		
+		public RoleCanPerform()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RoleCode", DbType="NVarChar(150) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string RoleCode
+		{
+			get
+			{
+				return this._RoleCode;
+			}
+			set
+			{
+				if ((this._RoleCode != value))
+				{
+					this.OnRoleCodeChanging(value);
+					this.SendPropertyChanging();
+					this._RoleCode = value;
+					this.SendPropertyChanged("RoleCode");
+					this.OnRoleCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OperationCode", DbType="NVarChar(150) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string OperationCode
+		{
+			get
+			{
+				return this._OperationCode;
+			}
+			set
+			{
+				if ((this._OperationCode != value))
+				{
+					this.OnOperationCodeChanging(value);
+					this.SendPropertyChanging();
+					this._OperationCode = value;
+					this.SendPropertyChanged("OperationCode");
+					this.OnOperationCodeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 }

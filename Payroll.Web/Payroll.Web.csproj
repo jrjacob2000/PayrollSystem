@@ -69,6 +69,7 @@
     <Content Include="Pages\Administration\ReferenceManagement\Create.aspx" />
     <Content Include="Pages\Administration\ReferenceManagement\Default.aspx" />
     <Content Include="Pages\Administration\ReferenceManagement\View.aspx" />
+    <Content Include="Pages\Administration\RoleManagement\Default.aspx" />
     <Content Include="Pages\Employee\Create.aspx" />
     <Content Include="Pages\Public\Login.aspx" />
     <Content Include="App_Themes\default\skin1.skin" />
@@ -85,6 +86,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Styles\Menu.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -175,6 +177,13 @@
     </Compile>
     <Compile Include="Pages\Administration\ReferenceManagement\View.aspx.designer.cs">
       <DependentUpon>View.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\RoleManagement\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\RoleManagement\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Employee\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>

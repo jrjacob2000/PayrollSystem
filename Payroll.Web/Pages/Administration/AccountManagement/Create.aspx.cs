@@ -13,9 +13,15 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
         protected void Page_Load(object sender, EventArgs e)
         {
             wzdAccount.FinishButtonClick += wzdAccount_FinishButtonClick;
+            wzdAccount.CancelButtonClick += wzdAccount_CancelButtonClick;
 
             if (!IsPostBack)
                 BindRoles();
+        }
+
+        void wzdAccount_CancelButtonClick(object sender, EventArgs e)
+        {
+            RedirectToReferrerUrl();
         }
 
         void wzdAccount_FinishButtonClick(object sender, WizardNavigationEventArgs e)
@@ -84,8 +90,8 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
         void BindRoles()
         {
             DataAccess.Security.DReferences data = new DataAccess.Security.DReferences();
-            var roleList = data.GetReferenceList().Where(x => x.ReferenceTypeCode == "ROLE" && (x.IsDeleted.HasValue? x.IsDeleted.Value : false)== false );
-
+            var roleList = data.GetReferenceByType("ROLE");
+             
             chkRoles.DataSource = roleList;
             chkRoles.DataTextField = "ReferenceValue";  
             chkRoles.DataValueField = "ReferenceCode";

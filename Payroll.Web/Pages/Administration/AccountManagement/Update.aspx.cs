@@ -57,7 +57,8 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
         void BindRoles()
         {
             DataAccess.Security.DReferences data = new DataAccess.Security.DReferences();
-            var roleList = data.GetReferenceList().Where(x => x.ReferenceTypeCode == "ROLE" && (x.IsDeleted.HasValue ? x.IsDeleted.Value : false) == false);
+            var roleList = data.GetReferenceByType("ROLE");
+            
 
             chkRoles.DataSource = roleList;
             chkRoles.DataTextField = "ReferenceValue";

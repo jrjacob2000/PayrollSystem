@@ -151,7 +151,7 @@ namespace Payroll.DataAccess.Security
             return result.ToList();
         }
 
-        private List<Privilege> GetPrivileges(string roleCode)
+        public List<Privilege> GetPrivileges(string roleCode)
         {
             SecurityDataContext context = new SecurityDataContext();
             var result =  (from a in context.RoleCanPerforms.Where(x => x.RoleCode == roleCode)
@@ -161,6 +161,26 @@ namespace Payroll.DataAccess.Security
                               }).ToList();
 
             return result;
+        }
+
+        public void AddPrivilege(string operationCode, string roleCode)
+        {
+            var entity = new RoleCanPerform();
+            entity.OperationCode = operationCode;
+            entity.RoleCode = roleCode;
+            SecurityDataContext context = new SecurityDataContext();
+            context.RoleCanPerforms.InsertOnSubmit(entity);
+
+            context.SubmitChanges();
+        }
+
+        public void DeletePrivileges(string roleCode)
+        {
+            SecurityDataContext context = new SecurityDataContext();
+            var tobeDeleted = context.RoleCanPerforms.Where(x => x.RoleCode == roleCode);
+
+            context.RoleCanPerforms.DeleteAllOnSubmit(tobeDeleted);
+            context.SubmitChanges();
         }
                 
     }

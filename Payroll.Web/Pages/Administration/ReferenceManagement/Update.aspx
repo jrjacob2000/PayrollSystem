@@ -23,7 +23,7 @@
                 <td>
                     
                 </td>
-                <td>
+                <td style ="padding-top :10px">
                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
                     <asp:Button ID="btnSave" runat="server" Text="Save" />
                 </td>

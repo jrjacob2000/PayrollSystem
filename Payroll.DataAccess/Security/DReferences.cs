@@ -50,6 +50,12 @@ namespace Payroll.DataAccess.Security
             return context.References.Where(x => x.IsDeleted == false || x.IsDeleted == null).ToList();
         }
 
+        public List<Reference> GetReferenceByType(string referenceType)
+        {
+            SecurityDataContext context = new SecurityDataContext();
+            return context.References.Where(x => x.ReferenceTypeCode.ToLower() == referenceType.ToLower() && (x.IsDeleted.HasValue ? x.IsDeleted.Value : false) == false).ToList();
+        }
+
         public List<ReferenceType> GetReferenceTypeList()
         {
             SecurityDataContext context = new SecurityDataContext();
