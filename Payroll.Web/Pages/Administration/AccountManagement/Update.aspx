@@ -78,4 +78,8 @@
         <asp:CheckBoxList ID="chkRoles" CssClass="CheckboxList" runat="server" Height="16px">
         </asp:CheckBoxList>
     </div>
+    <div style="padding-top :20px; text-align:right; width :400px">
+        <asp:Button ID="btnSave" runat ="server" Text ="Save" />
+        <asp:Button ID="btnCancel" runat ="server" Text="Cancel" />
+    </div>
 </asp:Content>

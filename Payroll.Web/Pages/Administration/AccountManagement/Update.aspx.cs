@@ -19,11 +19,65 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            btnCancel.Click += btnCancel_Click;
+            btnSave.Click += btnSave_Click;
             if (!IsPostBack)
             {
                 BindRoles();
                 Bind();                
             }
+        }
+
+        void btnSave_Click(object sender, EventArgs e)
+        {
+            DataAccess.Security.DAccountProfile daProfile = new DataAccess.Security.DAccountProfile();
+            DataAccess.Security.DAccounts daAccount = new DataAccess.Security.DAccounts();
+
+            var acct = daAccount.Get(Id);
+
+
+            DataAccess.AccountProfile profileEntity = daProfile.GetAccoutProfileById(acct.ProfileId);
+
+            //Profile
+            profileEntity.Id = Guid.NewGuid();
+            profileEntity.FirstName = txtFname.Text;
+            profileEntity.LastName = txtLname.Text;
+            profileEntity.FullName = string.Format("{0} {1}", txtFname.Text, txtLname.Text);
+            profileEntity.Title = txtTitle.Text;
+            profileEntity.JobTitle = txtJobTitle.Text;
+            profileEntity.IsMale = bool.Parse(ddlSex.SelectedValue);
+            profileEntity.IsDeleted = false;
+                       
+            //Roles
+            List<string> roleCodes = new List<string>();
+            roleCodes = chkRoles.Items.Cast<ListItem>().Where(x => x.Selected).Select(x => x.Value).ToList();
+            
+            try
+            {
+                daProfile.UpdateAccountProfile(profileEntity);
+                daAccount.AddRoles(Id, roleCodes);
+                SetMessage(MessageType.Succes, "Saving Successfull", true);
+            }
+            catch (System.Transactions.TransactionAbortedException ex)
+            {
+                SetMessage(MessageType.Error, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                SetMessage(MessageType.Error, ex.Message);
+            }
+
+            RedirectToReferrerUrl();
+
+            //daProfile.DeleteAccountProfile(profId.Value, false);
+            //throw (ex);
+                       
+                        
+        }
+
+        void btnCancel_Click(object sender, EventArgs e)
+        {
+            RedirectToReferrerUrl();
         }
 
         private void Bind()

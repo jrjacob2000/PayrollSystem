@@ -75,6 +75,7 @@
     <Content Include="App_Themes\default\skin1.skin" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Pages\Public\UnAuthorized.aspx" />
+    <Content Include="Pages\Public\WebForm1.aspx" />
     <Content Include="Resources\Images\Error.jpg" />
     <Content Include="Resources\Images\info.jpg" />
     <Content Include="Resources\Images\minus.jpg" />
@@ -205,6 +206,13 @@
     </Compile>
     <Compile Include="Pages\Public\UnAuthorized.aspx.designer.cs">
       <DependentUpon>UnAuthorized.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Public\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Public\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
     <Compile Include="PermissionProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
