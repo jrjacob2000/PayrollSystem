@@ -24,6 +24,33 @@ namespace Payroll.DataAccess.Security
 
             return entity.Id;
         }
+
+        public void UpdateAccountProfile(AccountProfile entity)
+        {
+            try
+            {
+                SecurityDataContext context = new SecurityDataContext();
+                var profile = context.AccountProfiles.Where(x => x.Id == entity.Id).FirstOrDefault();
+
+                profile.Id = entity.Id;
+                profile.FirstName = entity.FirstName;
+                profile.LastName = entity.LastName;
+                profile.FullName = entity.FullName;
+                profile.Title = entity.FullName;
+                profile.JobTitle = entity.FullName; ;
+                profile.IsMale = entity.IsMale;
+                profile.IsDeleted = entity.IsDeleted;
+                
+
+                context.SubmitChanges();
+                
+            }
+            catch
+            {
+            }
+
+       
+        }
     
         public void DeleteAccountProfile(Guid accountProfileId,bool softDelete)
         {
