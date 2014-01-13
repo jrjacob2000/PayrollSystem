@@ -1,4 +1,6 @@
-﻿<%@ Page Title="Reference Management" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Payroll.Web.Pages.Administration.ReferenceManagement.Default" %>
+<%@ Page Title="Reference Management" Language="C#" MasterPageFile="~/Site.Master"
+    AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Payroll.Web.Pages.Administration.ReferenceManagement.Default" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -13,31 +15,39 @@
             $(this).closest("tr").next().remove();
         });
     </script>
-
     <div>
-        <asp:LinkButton ID="lbCreate" runat="server">New Reference</asp:LinkButton>
-        <asp:GridView ID="grdReference" Width="550px"   runat="server" AutoGenerateColumns="False" DataKeyNames ="ReferenceTypeCode" AllowCustomPaging="True" 
-            OnRowDataBound ="grdReference_RowDataBound">
+        <asp:LinkButton ID="lbCreate" CssClass ="linkButton" runat="server">New Reference</asp:LinkButton>
+        <asp:GridView ID="grdReference" Width="550px" runat="server" AutoGenerateColumns="False"
+            DataKeyNames="ReferenceTypeCode" AllowCustomPaging="True" OnRowDataBound="grdReference_RowDataBound">
             <Columns>
-                <asp:TemplateField ItemStyle-Width ="15px" >
+                <asp:TemplateField ItemStyle-Width="15px">
                     <ItemTemplate>
-                        <img alt = "" style="cursor: pointer" src="../../../Resources/Images/plus.jpg" />
+                        <img alt="" style="cursor: pointer" src="../../../Resources/Images/plus.jpg" />
                         <asp:Panel ID="pnlDetails" runat="server" Style="display: none">
-                             <asp:GridView ID="gvDetails" Width="100%" runat="server" AutoGenerateColumns="false" OnRowEditing="gvDetails_RowEditing" OnRowDeleting="gvDetails_RowDeleting" DataKeyNames ="Id" EmptyDataText ="No data available">
-                                 <Columns>                                    
-                                     <asp:BoundField  ItemStyle-Width ="700px" DataField ="Id"  ItemStyle-CssClass="displayNone" HeaderStyle-CssClass="displayNone"  HeaderText ="Id"/>
+                            <asp:GridView ID="gvDetails" Width="100%" runat="server" AutoGenerateColumns="false"
+                                OnRowEditing="gvDetails_RowEditing" OnRowDeleting="gvDetails_RowDeleting" DataKeyNames="Id"
+                                EmptyDataText="No data available">
+                                <Columns>
+                                    <asp:BoundField ItemStyle-Width="700px" DataField="Id" ItemStyle-CssClass="displayNone"
+                                        HeaderStyle-CssClass="displayNone" HeaderText="Id" />
                                     <%--<asp:HyperLinkField DataTextField ="ReferenceTypeCode" HeaderText ="Reference Type" DataNavigateUrlFormatString="~/Pages/Administration/ReferenceManagement/view.aspx?id={0}"  DataNavigateUrlFields="id" />--%>
-                                    <asp:BoundField  ItemStyle-Width ="700px" DataField ="ReferenceValue" HeaderText ="Description"/>
-                                    <asp:CommandField ItemStyle-Width ="30px"  DeleteText ="Delete" ShowDeleteButton ="true" ShowEditButton="true" HeaderText ="Action" />
-                                     
-                                 </Columns>
-                              </asp:GridView>
+                                    <asp:BoundField ItemStyle-Width="700px" DataField="ReferenceValue" HeaderText="Description" />
+                                    <asp:TemplateField>
+                                        <ItemTemplate>
+                                        <asp:ImageButton ID="EditButton" runat="server" ImageUrl="~/Resources/Images/edit.jpg"
+                                                CommandName="Edit" AlternateText="Edit" ToolTip ="Edit"  />
+                                            <asp:ImageButton ID="DeleteButton" runat="server" ImageUrl="~/Resources/Images/delete.jpg"
+                                                CommandName="Delete" OnClientClick="return confirm('Are you sure you want to delete this reference?');"
+                                                AlternateText="Delete" ToolTip ="Delete" />
+                                        </ItemTemplate>
+                                    </asp:TemplateField>
+                                </Columns>
+                            </asp:GridView>
                         </asp:Panel>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField ="Description"  ItemStyle-Width="100%" HeaderText ="Reference Type"/>
-                                
-            </Columns>            
+                <asp:BoundField DataField="Description" ItemStyle-Width="100%" HeaderText="Reference Type" />
+            </Columns>
         </asp:GridView>
     </div>
 </asp:Content>
