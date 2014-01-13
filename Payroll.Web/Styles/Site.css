@@ -23,10 +23,10 @@ a {
     text-decoration: underline;
 }
 
-    a:link, a:visited,
+   /* a:link, a:visited,
     a:active, a:hover {
         color: #333;
-    }
+    }*/
 
     /*a:hover {
         background-color: #c7d1d6;
@@ -447,7 +447,7 @@ fieldset {
 		}
 		
     input, textarea,select {
-        border: 1px solid #e2e2e2;
+        border: 1px solid #ADA7A7;
         background: #fff;
         color: #333;
         font-size: 11px;        
@@ -962,5 +962,21 @@ tr.pager td {
 	color: #000000;
 }
 
-.HeaderBackground
-{ background-color:#313131}
+.linkButton {
+	background-color:#d3dce0;	
+	text-indent:0;
+	border:1px solid #787878;
+	display:inline-block;
+	color:Black;	
+	font-style:normal;
+	height:20px;
+	line-height:20px;
+	width:113px;
+	text-decoration:none;
+	text-align:center;
+	 margin-bottom:2px
+}.linkButton:active {
+	position:relative;
+	top:1px;
+}
+/* This button was generated using CSSButtonGenerator.com */
