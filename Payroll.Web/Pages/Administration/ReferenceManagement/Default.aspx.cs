@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -69,7 +69,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
                 string refTypeCode = grdReference.DataKeys[e.Row.RowIndex].Value.ToString();
 
                 GridView gvDetails = e.Row.FindControl("gvDetails") as GridView;
-                gvDetails.DataSource = Data.Where(x => x.ReferenceTypeCode == refTypeCode);
+                gvDetails.DataSource = Data.Where(x => x.ReferenceTypeCode.ToLower() == refTypeCode.ToLower());
                 gvDetails.DataBind();
             }
         }
