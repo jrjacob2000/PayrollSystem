@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,8 +36,8 @@ namespace Payroll.DataAccess.Security
                 profile.FirstName = entity.FirstName;
                 profile.LastName = entity.LastName;
                 profile.FullName = entity.FullName;
-                profile.Title = entity.FullName;
-                profile.JobTitle = entity.FullName; ;
+                profile.Title = entity.Title;
+                profile.JobTitle = entity.JobTitle; ;
                 profile.IsMale = entity.IsMale;
                 profile.IsDeleted = entity.IsDeleted;
                 
