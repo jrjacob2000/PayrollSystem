@@ -28,7 +28,7 @@ namespace Payroll.DataAccess.Security
         public List<Account> List()
         {
             SecurityDataContext context = new SecurityDataContext();
-            return context.Accounts.ToList();
+            return context.Accounts.Where(x => x.IsDeleted == false).ToList();
         }
 
         public Account Get(Guid Id)
