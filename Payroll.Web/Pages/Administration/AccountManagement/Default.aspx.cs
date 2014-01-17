@@ -13,11 +13,19 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
         {
             grdAccounts.RowDeleting += new GridViewDeleteEventHandler(grdAccounts_RowDeleting);
             grdAccounts.RowCommand += new GridViewCommandEventHandler(grdAccounts_RowCommand);
-            lbCreate.Click += lbCreate_Click;
+           // btnCreate.Click += new EventHandler(btnCreate_Click);
+            btnNewAccount.ServerClick += new EventHandler(btnNewAccount_ServerClick);
 
             if (!IsPostBack)
                 BindGrid();
         }
+
+        void btnNewAccount_ServerClick(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Pages/Administration/AccountManagement/Create.aspx");
+        }
+
+        
 
         void grdAccounts_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -47,12 +55,6 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
                 SetMessage(MessageType.Succes, string.Format("<b>{0}</b> was deleted successfully", acct.UserName));
                 BindGrid();
             }
-        }
-
-
-        void lbCreate_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("~/Pages/Administration/AccountManagement/Create.aspx");
         }
 
         void BindGrid()
