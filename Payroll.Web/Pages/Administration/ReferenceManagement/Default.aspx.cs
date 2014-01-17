@@ -25,18 +25,34 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
         }
         protected void Page_Load(object sender, EventArgs e)
         {
-            lbCreate.Click += lbCreate_Click;
+            btnNewReference.ServerClick += new EventHandler(btnNewReference_ServerClick);
+            repAccordion.ItemDataBound += new RepeaterItemEventHandler(repAccordion_ItemDataBound);
 
             if (!IsPostBack)
             {
-                Bind();
+                
+            }
+            Bind();
+        }
+
+        void repAccordion_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+            if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+            {
+                string refTypeCode = ((Payroll.DataAccess.ReferenceType)(e.Item.DataItem)).ReferenceTypeCode;
+
+                GridView gvDetails = e.Item.FindControl("gvDetails") as GridView;
+                gvDetails.DataSource = Data.Where(x => x.ReferenceTypeCode.ToLower() == refTypeCode.ToLower());
+                gvDetails.DataBind();
             }
         }
 
-        void lbCreate_Click(object sender, EventArgs e)
+        
+        void btnNewReference_ServerClick(object sender, EventArgs e)
         {
             Response.Redirect("~/Pages/Administration/ReferenceManagement/Create.aspx?reftypecode=ROLE");
         }
+               
 
         public override Operation SecurityContext
         {
@@ -50,8 +66,8 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
         {
             var dataTypes = new DataAccess.Security.DReferences().GetReferenceTypeList();
 
-            grdReference.DataSource = dataTypes;
-            grdReference.DataBind();
+            repAccordion.DataSource = dataTypes;
+            repAccordion.DataBind();
         }
 
         protected void gvDetails_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -62,17 +78,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
             Bind();
         }
 
-        protected void grdReference_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                string refTypeCode = grdReference.DataKeys[e.Row.RowIndex].Value.ToString();
 
-                GridView gvDetails = e.Row.FindControl("gvDetails") as GridView;
-                gvDetails.DataSource = Data.Where(x => x.ReferenceTypeCode.ToLower() == refTypeCode.ToLower());
-                gvDetails.DataBind();
-            }
-        }
 
         protected void gvDetails_RowEditing(object sender, GridViewEditEventArgs e)
         {
