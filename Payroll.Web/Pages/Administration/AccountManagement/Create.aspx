@@ -11,7 +11,7 @@
                     <h2>
                         User Profile
                     </h2>
-                    <table>
+                    <table class="tableForm">
                         <tr>
                             <th>
                                 Title:
@@ -72,7 +72,7 @@
                     <h2>
                         User Account
                     </h2>
-                    <table>
+                    <table class="tableForm">
                         <tr>
                             <th>
                                 UserName:
