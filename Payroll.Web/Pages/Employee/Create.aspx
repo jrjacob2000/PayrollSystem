@@ -1,6 +1,8 @@
 <%@ Page Title="New Employee" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true"
     CodeBehind="Create.aspx.cs" Inherits="Payroll.Web.Pages.Employee.Create" %>
 
+<%@ Register TagPrefix="uc" TagName="DropDownReference" Src="~/Controls/DropDownReference.ascx" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -69,7 +71,7 @@
                     Civil Status:
                 </th>
                 <td>
-                    <asp:TextBox ID="txtCivilStatus" runat="server"></asp:TextBox>
+                    <uc:DropDownReference runat ="server" ReferenceType ="CivilStatus" ID="ddlCivilStatus" />
                 </td>
             </tr>
             <tr>
@@ -121,7 +123,7 @@
                     Country:
                 </th>
                 <td>
-                    <asp:TextBox ID="txtCountry" runat="server"></asp:TextBox>
+                    <uc:DropDownReference runat ="server" ReferenceType ="Country" ID="ddlCountry" />
                 </td>
             </tr>
             <tr>
@@ -141,7 +143,7 @@
                     Tax Status:
                 </th>
                 <td>
-                    <asp:TextBox ID="txtTaxStatus" runat="server"></asp:TextBox>
+                    <uc:DropDownReference runat ="server" ReferenceType ="TaxStatus" ID="ddlTaxStatus" />
                 </td>
             </tr>
             <tr>
@@ -194,8 +196,7 @@
                     Department:
                 </th>
                 <td>
-                    <asp:DropDownList ID="ddlDropDown" runat="server">
-                    </asp:DropDownList>
+                    <uc:DropDownReference runat ="server" ReferenceType ="Department" ID="ddlDepartment" />
                 </td>
             </tr>
             <tr>
@@ -203,7 +204,7 @@
                     Position:
                 </th>
                 <td>
-                    <asp:TextBox ID="txtPosition" runat="server"></asp:TextBox>
+                    <uc:DropDownReference runat ="server" ReferenceType ="Position" ID="ddlPosition" />
                 </td>
             </tr>
             <tr>
@@ -219,7 +220,7 @@
                     Employement Type:
                 </th>
                 <td>
-                    <asp:TextBox ID="ddlEmployementType" runat="server"></asp:TextBox>
+                    <uc:DropDownReference runat ="server" ReferenceType ="EmployementType" ID="ddlEmployeeType" />
                 </td>
             </tr>
             <tr>
@@ -243,8 +244,7 @@
                     Employee Status:
                 </th>
                 <td>
-                    <asp:DropDownList ID="ddlEmployeeStatus" runat="server">
-                    </asp:DropDownList>
+                    <uc:DropDownReference runat ="server" ReferenceType ="EmployeeStatus" ID="ddlEmpStatus" />
                 </td>
             </tr>
         </table>
@@ -256,8 +256,7 @@
                     Bank Name:
                 </th>
                 <td>
-                    <asp:DropDownList ID="ddlBank" runat="server">
-                    </asp:DropDownList>
+                    <uc:DropDownReference runat ="server" ReferenceType ="Bank" ID="ddlBankName" />
                 </td>
             </tr>
             <tr>
@@ -265,7 +264,7 @@
                     Account Number:
                 </th>
                 <td>
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtAccountNumber" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
