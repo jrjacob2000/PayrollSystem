@@ -446,16 +446,22 @@ fieldset {
 		padding-left :3px;
 		height :17px;
 		width: 180px;
+		border: 1px solid #cecece;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.1) inset, 0 1px 0 rgba(255,255,255,0.2);
+		-webkit-border-radius: 2px;
 		}
 		
     input, textarea,select {
-        border: 1px solid #ADA7A7;
+        /*border: 1px solid #ADA7A7;*/
         background: #fff;
         color: #333;
         font-size: 11px;        
         word-spacing:normal;
         letter-spacing:normal;
-        font-family :Arial;       
+        font-family :Arial; 
+        border: 1px solid #cecece;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.1) inset, 0 1px 0 rgba(255,255,255,0.2);
+		-webkit-border-radius: 2px;      
         
     }
 
