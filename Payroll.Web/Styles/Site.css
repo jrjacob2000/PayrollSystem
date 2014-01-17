@@ -6,6 +6,7 @@ html {
 
 body {
     background-color: #fff;
+    background-color:;
     border-top: solid 10px #000;
     color: #333;
     font-size: 11px;
@@ -437,12 +438,13 @@ fieldset {
 
 	select 
 	{
-		height:18px;
+		height:20px;
 		width:180px;
 	}
 	input[type="text"],textarea,input[type="password"]
 	{
-		height :14px;
+		padding-left :3px;
+		height :17px;
 		width: 180px;
 		}
 		
@@ -472,7 +474,7 @@ fieldset {
             width: auto;
         }
         
-    input[type="submit"],
+   /* input[type="submit"],
     input[type="button"],
     button {
         background-color: #d3dce0;
@@ -491,6 +493,17 @@ fieldset {
         font-size: 1em;
         padding: 4px;
         margin-right: 4px;
+    }*/
+
+ input[type="submit"],
+ input[type="button"],
+ button {
+        font-size: 1em;
+        padding: 4px;
+        margin-right: 4px;
+        width: 100px;
+        border: 1px solid #787878;
+        cursor: pointer;
     }
 
 /* info and errors */
@@ -550,9 +563,14 @@ input[type="checkbox"].input-validation-error {
 /* tables
 ----------------------------------------------------------*/
 .tableForm tbody th {
-padding: 0px 0px 2px 0px;
-width: 130px;
-font-weight: normal;
+	padding: 2px 0px 2px 0px;
+	width: 130px;
+	font-weight: normal;
+}
+
+.tableForm td {
+	padding: 0px 0px 3px 3px;
+	font-weight: normal;
 }
 
 .tableForm th, .tableReadOnly th {
@@ -568,12 +586,12 @@ table {
 }
 
 th {
-        font-size: 1em;
-    text-align: left;
-    border: none 0px;
+        font-size: 11px;
+        height :17px;
+    /*text-align: left;
+    border: none 0px;*/
     padding-left: 0;
     width:100px;
-    font-weight :500;
 }
 
     th a {
@@ -613,10 +631,12 @@ th {
                 content: '▼';
         }
 
-td {
+td 
+{
+	padding: 0 2px 0 2px;
     /*padding-top :3px;
     padding-bottom :3px;*/
-    border: 0 none;
+    /*border: 0 none;*/
 }
 
 
@@ -980,3 +1000,8 @@ tr.pager td {
 	top:1px;
 }
 /* This button was generated using CSSButtonGenerator.com */
+
+
+.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text {
+padding: .2em 1em .2em 1em;
+}
