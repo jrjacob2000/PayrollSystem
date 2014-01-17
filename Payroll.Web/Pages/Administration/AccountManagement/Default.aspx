@@ -5,7 +5,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <div>
-        <asp:LinkButton ID="lbCreate" CssClass ="linkButton" runat="server">New Account</asp:LinkButton>
+        <button id="btnNewAccount" runat="server" style=" width:120px" class="addButton" >New Account</button>        
         <asp:GridView ID="grdAccounts" runat="server" DataKeyNames="Id" AutoGenerateColumns="false" >
             <Columns>
                 <asp:BoundField HeaderText="User Name" DataField="UserName" />
