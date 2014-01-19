@@ -7,27 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Payroll.Web.Pages.Administration.AccountManagement {
+namespace Payroll.Web.Pages.Employee {
     
     
-    public partial class Default {
+    public partial class Search {
         
         /// <summary>
-        /// btnNewAccount control.
+        /// btnCreate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlButton btnNewAccount;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnCreate;
         
         /// <summary>
-        /// grdAccounts control.
+        /// grdEmployees control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdAccounts;
+        protected global::System.Web.UI.WebControls.GridView grdEmployees;
     }
 }

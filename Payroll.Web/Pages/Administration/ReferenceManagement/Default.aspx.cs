@@ -75,7 +75,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
             var item = (Guid)e.Keys["Id"];
             DataAccess.Security.DReferences service = new DataAccess.Security.DReferences();
             service.DeleteReference(item);
-            Bind();
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/Default.aspx");
         }
 
 
@@ -89,7 +89,55 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
             Response.Redirect("~/Pages/Administration/ReferenceManagement/update.aspx?id=" + item.Cells[0].Text);
             //DataAccess.Security.DReferences service = new DataAccess.Security.DReferences();
             //service.DeleteReference(item);
-            Bind();
+        }
+
+        protected void gvDetails_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                // loop all data rows
+                foreach (DataControlFieldCell cell in e.Row.Cells)
+                {
+                    // check all cells in one row
+                    foreach (Control control in cell.Controls)
+                    {
+                        // Must use LinkButton here instead of ImageButton
+                        // if you are having Links (not images) as the command button.
+
+                        ImageButton button = control as ImageButton;
+
+                        if (button != null && button.CommandName == "Edit")
+                        {
+                            button.CssClass = "ui-icon ui-icon-pencil";
+                            //button.CssClass = "editButton";
+                            button.ToolTip = "Edit";
+                            button.Attributes.Add("icon", "ui-icon-pencil");
+
+                            //if(e.Row.RowState == DataControlRowState.Alternate )
+                            //    button.Attributes.Add("Style", "display: inline-block ;border-color:none ; background-color:#CCCCFF;");
+                            //else
+                                button.Attributes.Add("Style", "display: inline-block;");
+                          
+      
+                        }
+
+
+                        if (button != null && button.CommandName == "Delete")
+                        {
+                            // Add delete confirmation
+                            button.OnClientClick = "if (!confirm('Are you sure " +
+                                   "you want to delete this record?')) return;";
+                            button.CssClass = "ui-icon ui-icon-close";
+                            button.ToolTip = "Delete";
+                            //if (e.Row.RowState == DataControlRowState.Alternate)
+                            //    button.Attributes.Add("Style", "display: inline-block; background-color:#CCCCFF;border-color:none");
+                            //else
+                                button.Attributes.Add("Style", "display: inline-block");
+                            
+                        }
+                    }
+                }
+            }
         }
     }
 }

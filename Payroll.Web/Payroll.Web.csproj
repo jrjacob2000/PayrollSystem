@@ -58,7 +58,27 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\ui-lightness\images\animated-overlay.gif" />
+    <Content Include="App_Themes\ui-lightness\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-icons_222222_256x240.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="App_Themes\ui-lightness\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="App_Themes\ui-lightness\jquery-ui.css" />
+    <Content Include="App_Themes\ui-lightness\jquery-ui.min.css" />
+    <Content Include="App_Themes\ui-lightness\jquery.ui.theme.css" />
     <Content Include="Controls\MainHorizonalSiteMapConcreate.ascx" />
+    <Content Include="Controls\ReferenceDropDown.ascx" />
+    <Content Include="Controls\ExtendedTextBox.ascx" />
     <Content Include="Global.asax" />
     <Content Include="Default.aspx" />
     <Content Include="Pages\Administration\AccountManagement\Create.aspx" />
@@ -71,6 +91,8 @@
     <Content Include="Pages\Administration\ReferenceManagement\View.aspx" />
     <Content Include="Pages\Administration\RoleManagement\Default.aspx" />
     <Content Include="Pages\Employee\Create.aspx" />
+    <Content Include="Pages\Employee\Search.aspx" />
+    <Content Include="Pages\Employee\Update.aspx" />
     <Content Include="Pages\Public\Login.aspx" />
     <Content Include="App_Themes\default\skin1.skin" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -81,8 +103,11 @@
     <Content Include="Resources\Images\minus.jpg" />
     <Content Include="Resources\Images\plus.jpg" />
     <Content Include="Resources\Images\success.jpg" />
+    <Content Include="Resources\Images\ui-icons_ef8c08_256x240.png" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3\ui\jquery-ui.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
@@ -108,6 +133,20 @@
     </Compile>
     <Compile Include="Controls\MainHorizonalSiteMapConcreate.ascx.designer.cs">
       <DependentUpon>MainHorizonalSiteMapConcreate.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ReferenceDropDown.ascx.cs">
+      <DependentUpon>ReferenceDropDown.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ReferenceDropDown.ascx.designer.cs">
+      <DependentUpon>ReferenceDropDown.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ExtendedTextBox.ascx.cs">
+      <DependentUpon>ExtendedTextBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\ExtendedTextBox.ascx.designer.cs">
+      <DependentUpon>ExtendedTextBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Extender.cs" />
     <Compile Include="Global.asax.cs">
@@ -192,6 +231,20 @@
     </Compile>
     <Compile Include="Pages\Employee\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Employee\Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Employee\Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Employee\Update.aspx.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Employee\Update.aspx.designer.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Public\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>

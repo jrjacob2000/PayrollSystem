@@ -1,7 +1,7 @@
 ﻿USE [Payroll]
 GO
 
-/****** Object:  Table [dbo].[Employee]    Script Date: 01/09/2014 06:36:24 ******/
+/****** Object:  Table [dbo].[Employee]    Script Date: 01/19/2014 21:43:32 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -39,12 +39,24 @@ CREATE TABLE [dbo].[Employee](
 	[CurrentSalary] [decimal](18, 2) NOT NULL,
 	[BankNameCode] [nvarchar](50) NOT NULL,
 	[AccountNumber] [int] NULL,
-	[EmployeeStatus] [nvarchar](50) NOT NULL
+	[EmployeeStatus] [nvarchar](50) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+ CONSTRAINT [PK_Employee] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY],
+ CONSTRAINT [IX_Employee] UNIQUE NONCLUSTERED 
+(
+	[EmployeeNumber] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
 
 SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Employee] ADD  CONSTRAINT [DF_Employee_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
 GO
 
 

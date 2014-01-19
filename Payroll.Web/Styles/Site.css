@@ -1000,7 +1000,9 @@ tr.pager td {
 	width:113px;
 	text-decoration:none;
 	text-align:center;
-	 margin-bottom:2px
+	 margin-bottom:2px;
+      
+     
 }.linkButton:active {
 	position:relative;
 	top:1px;
@@ -1008,6 +1010,16 @@ tr.pager td {
 /* This button was generated using CSSButtonGenerator.com */
 
 
-.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text {
+/*.ui-button-text-icon-primary .ui-button-text, .ui-button-text-icons .ui-button-text {
 padding: .2em 1em .2em 1em;
+}
+
+.pencil-icon { 
+    background-position: -64px -112px; 
+    background-image: url(~/Resources/images/ui-icons_ef8c08_256x240.png);
+    width :20px;
+}*/
+
+.editButton {
+    width :7px;
 }

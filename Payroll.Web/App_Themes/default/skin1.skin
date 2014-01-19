@@ -14,7 +14,7 @@ Default skin template. The following skins are provided as examples only.
 <asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
 --%>
 
- <asp:GridView runat="server" AutoGenerateColumns="False" AllowCustomPaging="True" >
+ <asp:GridView runat="server" AutoGenerateColumns="False" AllowCustomPaging="True" Cssclass="ui-state-default"  >
             <AlternatingRowStyle BackColor="#CCCCFF" />
             <HeaderStyle BackColor="#313131" Font-Bold="True" Font-Overline="False" ForeColor="#FCFCF8" />
             <RowStyle width="200px" />            

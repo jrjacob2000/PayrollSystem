@@ -14,6 +14,10 @@ namespace Payroll.DataAccess.Security
             try
             {
                 SecurityDataContext context = new SecurityDataContext();
+
+                if (entity.Id == Guid.Empty)
+                    entity.Id = Guid.NewGuid();
+
                 context.AccountProfiles.InsertOnSubmit(entity);
                 context.SubmitChanges();
                 result = entity.Id;

@@ -73,11 +73,11 @@ namespace Payroll.Web.Pages.Administration.AccountManagement
                 }
                 catch (System.Transactions.TransactionAbortedException ex)
                 {
-                    SetMessage(MessageType.Error, ex.Message);
+                    SetMessage(MessageType.Error, ex.Message,true);
                 }
                 catch (Exception ex)
                 {
-                    SetMessage(MessageType.Error, ex.Message);
+                    SetMessage(MessageType.Error, ex.Message, true);
                 }
 
                 RedirectToReferrerUrl();

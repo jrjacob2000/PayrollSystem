@@ -17,7 +17,10 @@ union
 select 'TaxStatus', 'Tax Status',0
 union
 select 'Bank', 'Bank',0
-
+union 
+select 'Country','Country',0
+Go
+select 'EmployeeStatus','EmployeeStatus',0
 Go
 
 insert into dbo.Reference

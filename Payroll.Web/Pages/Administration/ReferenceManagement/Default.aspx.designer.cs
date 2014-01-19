@@ -13,21 +13,21 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement {
     public partial class Default {
         
         /// <summary>
-        /// lbCreate control.
+        /// btnNewReference control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbCreate;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnNewReference;
         
         /// <summary>
-        /// grdReference control.
+        /// repAccordion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdReference;
+        protected global::System.Web.UI.WebControls.Repeater repAccordion;
     }
 }

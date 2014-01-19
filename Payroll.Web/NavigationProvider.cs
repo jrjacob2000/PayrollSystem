@@ -28,7 +28,8 @@ namespace Payroll.Web
         if (new Operations.ViewEmployee().IsAuthorized())
         {
             NavigationNode Employee = result.Add("Employee");
-            Employee.Add("New Employee", "/Pages/Employee/Create.aspx");            
+            Employee.Add("New Employee", "/Pages/Employee/Create.aspx");
+            Employee.Add("Search Employee", "/Pages/Employee/Search.aspx"); 
         }
        
 

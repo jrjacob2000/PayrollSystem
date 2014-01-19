@@ -9,7 +9,7 @@
     <title>
         <%: Page.Title %>
         - IntelliSoft Payroll System</title>
-    <script type="text/javascript" src="/Scripts/jquery-ui-1.10.3/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="/Scripts/jquery-ui-1.10.3/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="/Scripts/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
     
     <link type="text/css" rel="stylesheet" href="~/App_Themes/ui-lightness/jquery-ui.css">
@@ -26,7 +26,30 @@
                         .button()
                         .click(function (event) { });
 
-                    $(".addButton").button({ icons: { primary: "ui-icon-plusthick"} });
+                    $(".addButton").button({ icons: { primary: "ui-icon-plusthick" } });
+                   
+
+                    //$('input:submit, input:button').each(function () {
+                    //    $(this).replaceWith('<button type="' + $(this).attr('type') + '" class="' + $(this).attr('class') + '" style="' + $(this).attr('style') + '">' + $(this).val() + '</button>');
+                    //});
+
+                    //$('.editButton').button({
+                    //    icons: {
+                    //        secondary: 'ui-icon-pencil'
+                    //    }
+                    //});
+
+                   
+
+                    //$('input[type="button"]').each(function () {
+                    //    $(this).hide().after('<button>').next().button({
+                    //        icons: { primary: $(this).attr('icon') },
+                    //        label: $(this).val()
+                    //    }).click(function (event) {
+                    //        event.preventDefault();
+                    //        $(this).prev().click();
+                    //    });
+                    //});
           
                 })
                 
@@ -93,7 +116,7 @@
                     <div id="divMessage" runat="server" enableviewstate="false" style ="border-radius :5px">
                         <asp:Literal ID="lblMessage" runat="server"></asp:Literal>
                     </div>
-                    <div style="padding:10px 0px 35px 25px;" >
+                    <div style="padding:10px 25px 35px 25px;" >
                         <asp:ContentPlaceHolder runat="server" ID="MainContent" />
                     </div>
                 </div>

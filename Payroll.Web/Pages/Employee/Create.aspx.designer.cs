@@ -13,31 +13,292 @@ namespace Payroll.Web.Pages.Employee {
     public partial class Create {
         
         /// <summary>
-        /// ddlReferenceType control.
+        /// txtTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlReferenceType;
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtTitle;
         
         /// <summary>
-        /// txtRoleCode control.
+        /// txtFname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoleCode;
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtFname;
         
         /// <summary>
-        /// txtRoleDesc control.
+        /// txtMname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtRoleDesc;
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtMname;
+        
+        /// <summary>
+        /// txtLname control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtLname;
+        
+        /// <summary>
+        /// txtAge control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtAge;
+        
+        /// <summary>
+        /// txtBirthDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtBirthDate;
+        
+        /// <summary>
+        /// ddlSex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSex;
+        
+        /// <summary>
+        /// rfvSex control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSex;
+        
+        /// <summary>
+        /// ddlCivilStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ReferenceDropDown ddlCivilStatus;
+        
+        /// <summary>
+        /// txtHomePhone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtHomePhone;
+        
+        /// <summary>
+        /// txtMobile control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtMobile;
+        
+        /// <summary>
+        /// txtEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtEmail;
+        
+        /// <summary>
+        /// txtAddress control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtAddress;
+        
+        /// <summary>
+        /// TxtCityMun control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox TxtCityMun;
+        
+        /// <summary>
+        /// txtProvState control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtProvState;
+        
+        /// <summary>
+        /// ddlCountry control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ReferenceDropDown ddlCountry;
+        
+        /// <summary>
+        /// txtZipCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtZipCode;
+        
+        /// <summary>
+        /// ddlTaxStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ReferenceDropDown ddlTaxStatus;
+        
+        /// <summary>
+        /// txtSSSNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtSSSNumber;
+        
+        /// <summary>
+        /// txtTIN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtTIN;
+        
+        /// <summary>
+        /// txtPagIbig control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtPagIbig;
+        
+        /// <summary>
+        /// txtPhilHealth control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtPhilHealth;
+        
+        /// <summary>
+        /// txtEmployeeNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtEmployeeNumber;
+        
+        /// <summary>
+        /// ddlDepartment control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ReferenceDropDown ddlDepartment;
+        
+        /// <summary>
+        /// ddlPosition control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ReferenceDropDown ddlPosition;
+        
+        /// <summary>
+        /// txtHiredDate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtHiredDate;
+        
+        /// <summary>
+        /// ddlEmployeeType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ReferenceDropDown ddlEmployeeType;
+        
+        /// <summary>
+        /// txtSalaryRate control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtSalaryRate;
+        
+        /// <summary>
+        /// txtCurrentSalary control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtCurrentSalary;
+        
+        /// <summary>
+        /// ddlEmpStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ReferenceDropDown ddlEmpStatus;
+        
+        /// <summary>
+        /// ddlBankName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ReferenceDropDown ddlBankName;
+        
+        /// <summary>
+        /// txtAccountNumber control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Payroll.Web.Controls.ExtendedTextBox txtAccountNumber;
         
         /// <summary>
         /// btnCancel control.
