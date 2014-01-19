@@ -20,7 +20,7 @@ select 'Bank', 'Bank',0
 union 
 select 'Country','Country',0
 Go
-select 'EmployeeStatus','EmployeeStatus',0
+select 'EmployeeStatus','Employee Status',0
 Go
 
 insert into dbo.Reference
