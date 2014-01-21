@@ -1,0 +1,19 @@
+﻿
+.gridHeader th
+{
+    background-color :#313131;
+    font-weight :bold;
+    color :#FCFCF8;
+    
+}
+
+.gridAlternating 
+{
+    background-color :#CCCCFF;    
+}
+
+.ui-state-default tr:hover
+{ 
+	background-color:#fbd850;
+	/*font-weight: normal;*/
+}

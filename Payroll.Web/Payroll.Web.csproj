@@ -112,6 +112,7 @@
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Styles\ExtendedGrid.css" />
     <Content Include="Styles\Menu.css" />
     <Content Include="Styles\Site.css" />
     <Content Include="Web.config">
@@ -125,6 +126,7 @@
     <Compile Include="BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Controls\ExtendedGridview.cs" />
     <Compile Include="Controls\HorizontalMenuItem.cs" />
     <Compile Include="Controls\HorizontalSubMenuItem.cs" />
     <Compile Include="Controls\MainHorizonalSiteMapConcreate.ascx.cs">
