@@ -1,4 +1,4 @@
-﻿
+
 .gridHeader th
 {
     background-color :#313131;
@@ -17,3 +17,16 @@
 	background-color:#fbd850;
 	/*font-weight: normal;*/
 }
+
+.gridEmptyRow td
+{
+	 padding :15px 0px 20px 15px;
+	 color :Red;
+	 font-weight :normal ;
+	}
+	
+.gridEmptyRow td:hover
+{
+	background:#f6f6f6 url(images/ui-bg_glass_100_f6f6f6_1x400.png) 50% 50% repeat-x;
+
+	}
