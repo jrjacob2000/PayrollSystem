@@ -39,7 +39,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
         {
             if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
             {
-                string refTypeCode = ((Payroll.DataAccess.ReferenceType)(e.Item.DataItem)).ReferenceTypeCode;
+                string refTypeCode = ((Payroll.DataAccess.Entity.ReferenceType)(e.Item.DataItem)).ReferenceTypeCode;
 
                 GridView gvDetails = e.Item.FindControl("gvDetails") as GridView;
                 gvDetails.DataSource = Data.Where(x => x.ReferenceTypeCode.ToLower() == refTypeCode.ToLower());
