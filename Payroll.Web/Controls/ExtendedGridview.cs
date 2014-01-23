@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,12 +25,18 @@ namespace Payroll.Web.Controls
 
         void ExtendedGridview_RowDataBound(object sender, GridViewRowEventArgs e)
         {
+            if (e.Row.RowType == DataControlRowType.EmptyDataRow)
+                e.Row.CssClass = "gridEmptyRow";
+
             if (e.Row.RowType == DataControlRowType.Header)
             {
                 e.Row.CssClass = "gridHeader";
+                //e.Row.Cells[e.Row.Cells.Count - 1].Width = new Unit("30px");
             }
+
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
+                //e.Row.Cells[e.Row.Cells.Count-1].Width = new Unit("30px");
 
                 if (e.Row.RowState == DataControlRowState.Alternate)
                     e.Row.CssClass = "gridAlternating";
