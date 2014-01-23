@@ -1,12 +1,25 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="Payroll">
   <DataContextMoniker Name="/PayrollDataContext" />
   <nestedChildShapes>
-    <classShape Id="e231468a-4be5-4b40-bf63-c310fabcce57" absoluteBounds="0.5, 0.5, 2, 6.3861311848958326">
+    <classShape Id="e231468a-4be5-4b40-bf63-c310fabcce57" absoluteBounds="0.5, 0.5, 2, 5.5335310872395826">
       <DataClassMoniker Name="/PayrollDataContext/Employee" />
       <nestedChildShapes>
-        <elementListCompartment Id="cbf057be-453d-4a2b-a823-86a5d96ef89f" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 5.826131184895833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="cbf057be-453d-4a2b-a823-86a5d96ef89f" absoluteBounds="0.51499999999999968, 0.96, 1.9700000000000002, 4.973531087239583" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
+    <classShape Id="e50a672f-2d5f-46d4-9451-490895bcd0aa" absoluteBounds="4, 2.125, 2, 2.24658447265625">
+      <DataClassMoniker Name="/PayrollDataContext/EmployeeAddress" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8d0e731b-8659-4d2f-a998-cfe43cc6e6e6" absoluteBounds="4.015, 2.585, 1.9700000000000002, 1.68658447265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 3.24829223632813); (4 : 3.24829223632813)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PayrollDataContext/Employee/Employee_EmployeeAddress" />
+      <nodes>
+        <classShapeMoniker Id="e231468a-4be5-4b40-bf63-c310fabcce57" />
+        <classShapeMoniker Id="e50a672f-2d5f-46d4-9451-490895bcd0aa" />
+      </nodes>
+    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
