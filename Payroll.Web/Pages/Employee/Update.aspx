@@ -1,6 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Update.aspx.cs" Inherits="Payroll.Web.Pages.Employee.Update" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Update.aspx.cs" Inherits="Payroll.Web.Pages.Employee.Update" %>
 <%@ Register TagPrefix="uc" TagName="DropDownReference" Src="~/Controls/ReferenceDropDown.ascx" %>
 <%@ Register TagPrefix="uc" TagName="TextBox" Src="~/Controls/ExtendedTextBox.ascx" %>
+
+<%@ Register TagPrefix="uc" TagName="CreateAddressDialog" Src="~/Pages/Employee/Address/CreateAddress.ascx" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
 </asp:Content>
@@ -69,7 +71,7 @@
                         <asp:ListItem Value ="M" Text ="Male"/>
                         <asp:ListItem Value ="F" Text ="Female"/>
                     </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="rfvSex" runat ="server" ErrorMessage ="*" ControlToValidate ="ddlSex"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvSex" runat ="server" ErrorMessage ="" ControlToValidate ="ddlSex"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>
@@ -289,8 +291,9 @@
             </tr>
         </table>
         <div style="text-align: right; width: 400px">
-            <asp:Button ID="btnCancel" runat="server" CssClass="ui-button-text-only" Text="Cancel" />
+            <asp:Button ID="btnCancel" runat="server" CssClass="ui-button-text-only" Text="Cancel" CausesValidation="false" />
             <asp:Button ID="btnSave" runat="server" Text="Save" />
         </div>
+        <uc:CreateAddressDialog id="dialogAddress" runat="server"></uc:CreateAddressDialog>
     </div>
 </asp:Content>
