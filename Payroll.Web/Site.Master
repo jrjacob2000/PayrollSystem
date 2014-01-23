@@ -28,30 +28,7 @@
                         .click(function (event) { });
 
                     $(".addButton").button({ icons: { primary: "ui-icon-plusthick" } });
-                   
 
-                    //$('input:submit, input:button').each(function () {
-                    //    $(this).replaceWith('<button type="' + $(this).attr('type') + '" class="' + $(this).attr('class') + '" style="' + $(this).attr('style') + '">' + $(this).val() + '</button>');
-                    //});
-
-                    //$('.editButton').button({
-                    //    icons: {
-                    //        secondary: 'ui-icon-pencil'
-                    //    }
-                    //});
-
-                   
-
-                    //$('input[type="button"]').each(function () {
-                    //    $(this).hide().after('<button>').next().button({
-                    //        icons: { primary: $(this).attr('icon') },
-                    //        label: $(this).val()
-                    //    }).click(function (event) {
-                    //        event.preventDefault();
-                    //        $(this).prev().click();
-                    //    });
-                    //});
-          
                 })
                 
        );
@@ -114,7 +91,7 @@
             </section>
         <section class="content-wrapper main-content clear-fix">
                 <div id="body">
-                    <div id="divMessage" runat="server" enableviewstate="false" style ="border-radius :5px">
+                    <div id="divMessage" runat="server" enableviewstate="false" style ="border-radius :5px; padding-top :6px; padding-bottom :6px">
                         <asp:Literal ID="lblMessage" runat="server"></asp:Literal>
                     </div>
                     <div style="padding:10px 25px 35px 25px;" >
@@ -133,6 +110,26 @@
             </div>
         </footer>
     </form>
+
+    <%--Override the asp.net validor--%>
+    <script type="text/javascript">
+        function WebForm_OnSubmit() {
+            if (typeof (ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) {
+                for (var i in Page_Validators) {
+                    try {
+                        var control = document.getElementById(Page_Validators[i].controltovalidate);
+                        if (!Page_Validators[i].isvalid) {
+                            control.className = "ui-state-highlight ui-icon-alert";
+                        } else {
+                            control.className = "";
+                        }
+                    } catch (e) { }
+                }
+                return false;
+            }
+            return true;
+        }
+</script>
 </body>
 
 </html>
