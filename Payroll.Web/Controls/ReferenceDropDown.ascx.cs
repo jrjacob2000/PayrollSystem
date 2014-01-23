@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -48,6 +48,56 @@ namespace Payroll.Web.Controls
                 ViewState["ReferenceType"] = value;
             }
         }
+
+       
+        public string DataTextField
+        {
+            get
+            {
+                if (ViewState["DataTextField"] != null)
+                    return ViewState["DataTextField"].ToString();
+                else
+                    return "ReferenceValue";
+            }
+            set
+            {
+                ViewState["DataTextField"] = value;
+            }
+        }
+
+        public string DataValueField
+        {
+            get
+            {
+                if (ViewState["DataValueField"] != null)
+                    return ViewState["DataValueField"].ToString();
+                else
+                    return "ReferenceCode";
+            }
+            set
+            {
+                ViewState["DataValueField"] = value;
+            }
+        }
+
+        public object DataSource
+        {
+            get
+            {
+                if (ViewState["DataSource"] != null)
+                    return ViewState["DataSource"];
+                else
+                {
+                    DataAccess.Security.DReferences data = new DataAccess.Security.DReferences();
+                    return data.GetReferenceByType(ReferenceType);
+                }
+            }
+            set
+            {
+                ViewState["DataSource"] = value;
+            }
+        }
+
         protected void Page_Init(object sender, EventArgs e)
         {
             rfvExtended.Enabled = Required;
@@ -62,13 +112,13 @@ namespace Payroll.Web.Controls
 
         void Bind()
         {
-            DataAccess.Security.DReferences data = new DataAccess.Security.DReferences();
-            var roleList = data.GetReferenceByType(ReferenceType);
+            //DataAccess.Security.DReferences data = new DataAccess.Security.DReferences();
+            //var roleList = data.GetReferenceByType(ReferenceType);
 
 
-            ddlReference.DataSource = roleList;
-            ddlReference.DataTextField = "ReferenceValue";
-            ddlReference.DataValueField = "ReferenceCode";
+            ddlReference.DataSource = DataSource;
+            ddlReference.DataTextField = DataTextField;
+            ddlReference.DataValueField = DataValueField;
             ddlReference.DataBind();
 
             ddlReference.Items.Insert(0, new ListItem(""));
