@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -107,6 +107,33 @@ namespace Payroll.DataAccess.Core
         {
             PayrollDataContext context = new PayrollDataContext();
             return context.Employees.Where(x => x.IsDeleted == false).ToList();
+        }
+
+        public void CreateAddress(EmployeeAddress address)
+        {
+            try
+            {
+                PayrollDataContext context = new PayrollDataContext();
+                if (address.Id == Guid.Empty)
+                    address.Id = Guid.NewGuid();
+
+                if (address.EmployeeId == Guid.Empty)
+                    throw new Exception("Cannot add address to empty employee id");
+
+                context.EmployeeAddresses.InsertOnSubmit(address);
+                context.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        public List<EmployeeAddress> GetAddressList()
+        {
+            PayrollDataContext context = new PayrollDataContext();
+            return context.EmployeeAddresses.ToList();
         }
     }
 }
