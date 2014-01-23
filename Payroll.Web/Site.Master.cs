@@ -89,20 +89,29 @@ namespace Payroll.Web
         private void BindMessage()
         {
             //successMessage
-            lblMessage.Text = this.CurrentPage().PageMessage.Message;
+            //lblMessage.Text ="<Span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin-right: .3em;\"></Span>"
+                
 
             switch (CurrentPage.PageMessage.MessageType)
             {
                 case MessageType.Succes :
-                    divMessage.Attributes.Add("class", "successMessage");
+                    lblMessage.Text ="<Span class=\"ui-icon ui-icon-circle-check\" style=\"float: left; margin-right: .3em;\"></Span>";
+                    divMessage.Attributes.Add("class", "ui-state-highlight");
+                    //divMessage.Attributes.Add("class", "successMessage");                    
                     break;
                 case MessageType.Information :
-                    divMessage.Attributes.Add("class", "InformationMessage");
+                    lblMessage.Text ="<Span class=\"ui-icon ui-icon-info\" style=\"float: left; margin-right: .3em;\"></Span>";
+                    divMessage.Attributes.Add("class", "ui-state-highlight");
+                    //divMessage.Attributes.Add("class", "InformationMessage");
                     break;
                 case MessageType.Error :
-                    divMessage.Attributes.Add("class", "ErrorMessage");
+                    lblMessage.Text = "<Span class=\"ui-icon ui-icon-alert\" style=\"float: left; margin-right: .3em;\"></Span>";
+                    divMessage.Attributes.Add("class", "ui-state-error style");
+                    //divMessage.Attributes.Add("class", "ErrorMessage");
                     break;
             }
+
+            lblMessage.Text = lblMessage.Text +  this.CurrentPage().PageMessage.Message ;
 
         }
        
