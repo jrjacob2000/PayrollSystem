@@ -12,7 +12,7 @@
             <Columns>
                 <asp:BoundField HeaderText="User Name" DataField="UserName" />
                 <asp:BoundField HeaderText="Email" DataField="Email" />
-                <asp:CommandField HeaderText="Action" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width ="100" ButtonType ="Image"  ShowEditButton="true" ShowDeleteButton ="true" />
+                <asp:CommandField HeaderText="Action" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width ="30px" ButtonType ="Image"  ShowEditButton="true" ShowDeleteButton ="true" />
             </Columns>
         </uc:ExtendedGridview>
     </div>
