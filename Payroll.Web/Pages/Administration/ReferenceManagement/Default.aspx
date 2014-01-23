@@ -42,7 +42,7 @@
                                         HeaderStyle-CssClass="displayNone" HeaderText="Id" />
                                     <%--<asp:HyperLinkField DataTextField ="ReferenceTypeCode" HeaderText ="Reference Type" DataNavigateUrlFormatString="~/Pages/Administration/ReferenceManagement/view.aspx?id={0}"  DataNavigateUrlFields="id" />--%>
                                     <asp:BoundField ItemStyle-Width="800px" DataField="ReferenceValue" HeaderText="Description" />
-                                    <asp:CommandField HeaderText="Action" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width ="100" ButtonType ="Image"  ShowEditButton="true" ShowDeleteButton ="true" />
+                                    <asp:CommandField HeaderText="Action" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width ="100px" ButtonType ="Image"  ShowEditButton="true" ShowDeleteButton ="true" />
                             
                                 </Columns>
                             </uc:ExtendedGridview>
