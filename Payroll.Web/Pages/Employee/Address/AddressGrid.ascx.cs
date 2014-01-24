@@ -19,8 +19,9 @@ namespace Payroll.Web.Pages.Employee.Address
         {
             DataAccess.Core.DAEmployee service = new DataAccess.Core.DAEmployee();
             var data = service.GetAddressList();
+
             grdAddress.DataSource = data;
-            grdAddress.DataBind();
+            grdAddress.DataBind();           
 
         }
     }

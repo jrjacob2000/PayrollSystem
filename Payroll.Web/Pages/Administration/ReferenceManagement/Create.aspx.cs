@@ -68,7 +68,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
             ddlReferenceType.Items.Insert(0,new ListItem("",""));
         }
 
-        List<ReferenceType> RerenceTypeList
+        List<DataAccess.Entity.ReferenceType> RerenceTypeList
         {
             get { 
                 Payroll.DataAccess.Security.DReferences service = new DataAccess.Security.DReferences();

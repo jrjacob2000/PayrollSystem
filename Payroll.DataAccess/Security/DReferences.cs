@@ -56,10 +56,17 @@ namespace Payroll.DataAccess.Security
             return context.References.Where(x => x.ReferenceTypeCode.ToLower() == referenceType.ToLower() && (x.IsDeleted.HasValue ? x.IsDeleted.Value : false) == false).ToList();
         }
 
-        public List<ReferenceType> GetReferenceTypeList()
+        public List<Entity.ReferenceType> GetReferenceTypeList()
         {
             SecurityDataContext context = new SecurityDataContext();
-            return context.ReferenceTypes.Where(x => x.IsDeleted == false || x.IsDeleted == null).ToList();
+            return context.ReferenceTypes.Where(x => x.IsDeleted == false || x.IsDeleted == null)
+                .Select(x =>
+                    new Entity.ReferenceType()
+            {
+                ReferenceTypeCode = x.ReferenceTypeCode,
+                Description = x.Description,
+                IsDeleted = x.IsDeleted
+            }).ToList();
         }
     }
 }

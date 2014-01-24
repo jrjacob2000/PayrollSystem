@@ -33,5 +33,26 @@ namespace Payroll.DataAccess.Properties {
                 return ((string)(this["PayrollConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=.\\SqlExpress;Initial Catalog=EBee;Integrated Security=True")]
+        public string EBeeConnectionString {
+            get {
+                return ((string)(this["EBeeConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\aspnet-PayrollSystem-201310040842" +
+            "23.mdf;Integrated Security=True;Connect Timeout=30")]
+        public string aspnet_PayrollSystem_20131004084223ConnectionString {
+            get {
+                return ((string)(this["aspnet_PayrollSystem_20131004084223ConnectionString"]));
+            }
+        }
     }
 }

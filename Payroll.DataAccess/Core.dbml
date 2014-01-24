@@ -31,6 +31,21 @@
       <Column Name="AccountNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="EmployeeStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_EmployeeAddress" Member="EmployeeAddresses" ThisKey="Id" OtherKey="EmployeeId" Type="EmployeeAddress" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmployeeAddress" Member="EmployeeAddresses">
+    <Type Name="EmployeeAddress">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EmployeeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="AddressTypeCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Address" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CityMun" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="ProvState" Type="System.String" DbType="NVarChar(250) NOT NULL" CanBeNull="false" />
+      <Column Name="CountryCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ZipCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
+      <Association Name="Employee_EmployeeAddress" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

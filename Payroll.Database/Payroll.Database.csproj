@@ -51,6 +51,7 @@
     <Content Include="Scripts\1.00.00.0000\07_RoleCanPerform.sql" />
     <Content Include="Scripts\1.00.00.0000\08_insert_ReferenceData.sql" />
     <Content Include="Scripts\1.00.00.0000\09_Employee.sql" />
+    <Content Include="Scripts\1.00.00.0000\Create_EmployeeAddress.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

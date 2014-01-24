@@ -71,7 +71,7 @@
                         <asp:ListItem Value ="M" Text ="Male"/>
                         <asp:ListItem Value ="F" Text ="Female"/>
                     </asp:DropDownList>
-                    <asp:RequiredFieldValidator ID="rfvSex" runat ="server" ErrorMessage ="*" ControlToValidate ="ddlSex"></asp:RequiredFieldValidator>
+                    <asp:RequiredFieldValidator ID="rfvSex" runat ="server" ErrorMessage ="" ControlToValidate ="ddlSex"></asp:RequiredFieldValidator>
                 </td>
             </tr>
             <tr>

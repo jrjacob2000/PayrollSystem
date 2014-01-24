@@ -90,11 +90,15 @@
     <Content Include="Pages\Administration\ReferenceManagement\Default.aspx" />
     <Content Include="Pages\Administration\ReferenceManagement\View.aspx" />
     <Content Include="Pages\Administration\RoleManagement\Default.aspx" />
+    <Content Include="Pages\Employee\Address\AddressGrid.ascx" />
+    <Content Include="Pages\Employee\Address\CreateAddress.ascx" />
+    <Content Include="Pages\Employee\Address\WebUserControl1.ascx" />
     <Content Include="Pages\Employee\Create.aspx" />
     <Content Include="Pages\Employee\Search.aspx" />
     <Content Include="Pages\Employee\Update.aspx" />
     <Content Include="Pages\Public\Login.aspx" />
     <Content Include="App_Themes\default\skin1.skin" />
+    <Content Include="WebServices\PayrollWebService.asmx" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Pages\Public\UnAuthorized.aspx" />
     <Content Include="Pages\Public\WebForm1.aspx" />
@@ -151,6 +155,9 @@
       <DependentUpon>ExtendedTextBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="Extender.cs" />
+    <Compile Include="FormlessPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,6 +234,24 @@
     <Compile Include="Pages\Administration\RoleManagement\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Employee\Address\AddressGrid.ascx.cs">
+      <DependentUpon>AddressGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Employee\Address\AddressGrid.ascx.designer.cs">
+      <DependentUpon>AddressGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Employee\Address\CreateAddress.ascx.cs">
+      <DependentUpon>CreateAddress.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Employee\Address\WebUserControl1.ascx.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Employee\Address\WebUserControl1.ascx.designer.cs">
+      <DependentUpon>WebUserControl1.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Employee\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -291,6 +316,10 @@
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebServices\PayrollWebService.asmx.cs">
+      <DependentUpon>PayrollWebService.asmx</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
