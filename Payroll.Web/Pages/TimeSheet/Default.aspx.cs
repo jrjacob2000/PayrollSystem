@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -16,8 +16,9 @@ namespace Payroll.Web.Pages.TimeSheet
             ddlEmployee.SelectedIndexChanged += ddlEmployee_SelectedIndexChanged;
             if (!IsPostBack)
             {
-                dialogTimeSheet.EmployeeId = ddlEmployee.SelectedValue;
+                
                 BindEmployee();
+                dialogTimeSheet.EmployeeId = ddlEmployee.SelectedValue;
                 BindTimeSheet();
                 
             }
@@ -37,7 +38,9 @@ namespace Payroll.Web.Pages.TimeSheet
         void BindTimeSheet()
         {
             DataAccess.Core.DATimeSheet service = new DataAccess.Core.DATimeSheet();
-            var data = service.GetListByEmployee(new Guid(ddlEmployee.SelectedValue));
+            var startDate = DateTime.Now.GetFirstDayOfWeek().Date;
+            var endDate = startDate.AddDays(7).Date;
+            var data = service.GetListByEmployee(new Guid(ddlEmployee.SelectedValue), startDate, endDate);
             grdTimeLog.DataSource = data;
             grdTimeLog.DataBind();
         }
