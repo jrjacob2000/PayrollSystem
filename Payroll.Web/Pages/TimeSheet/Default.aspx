@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Time Sheet" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Payroll.Web.Pages.TimeSheet.Default" %>
+<%@ Page Title="Time Sheet" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="Payroll.Web.Pages.TimeSheet.Default" %>
 
 <%@ Register TagPrefix="uc" Namespace="Payroll.Web.Controls" Assembly="Payroll.Web" %>
 <%@ Register TagPrefix="uc" TagName="CreateTimeSheet" Src="~/Pages/TimeSheet/CreateTimeLog.ascx" %>
@@ -23,5 +23,4 @@
           <asp:CommandField HeaderText="Action" ItemStyle-HorizontalAlign="Center" HeaderStyle-Width ="40px" ButtonType ="Image"  ShowEditButton="true" ShowDeleteButton ="true" />
       </Columns>
   </uc:ExtendedGridview>
-    <asp:Calendar ID="Calendar1" runat="server" EnableTheming="True" ShowGridLines="True"></asp:Calendar>
 </asp:Content>
