@@ -27,11 +27,22 @@ namespace Payroll.Web.WebServices
             entity.DateTimeIn = DateTime.Parse(request.DateTimeIn);
             entity.DateTimeOut = DateTime.Parse(request.DateTimeOut);
 
-            if(entity.DateTimeIn > entity.ReportedDate )
-                return ("Date timein cannot be greater than Reported date");
+            if (entity.DateTimeIn.HasValue)
+            {
+                if (entity.DateTimeIn.Value.Date != entity.ReportedDate)
+                    return ("Date time-in should be equal to Reported date");
+
+                if (entity.DateTimeOut < entity.DateTimeIn)
+                    return ("Date time-out cannot be less than Date time-in");
+            }
+            else
+            {
+                if (entity.DateTimeOut.HasValue)
+                    return ("Date time-in is required");
+            }
+
+        
             
-            if(entity.DateTimeOut > entity.DateTimeIn)
-                return ("Date timeout cannot be greater than Date timein");
             
 
             service.Create(entity);
