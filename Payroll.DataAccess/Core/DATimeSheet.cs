@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -37,6 +37,7 @@ namespace Payroll.DataAccess.Core
         public EmployeeTimeSheet GetById(Guid id)
         {
             PayrollDataContext context = new PayrollDataContext();
+            
 
             return context.EmployeeTimeSheets.Where(x => x.Id == id).FirstOrDefault();
 
@@ -56,11 +57,22 @@ namespace Payroll.DataAccess.Core
 
         }
 
-        public List<EmployeeTimeSheet> GetListByEmployee(Guid employeeId)
+        public List<EmployeeTimeSheet> GetListByEmployee(Guid employeeId,DateTime startDate, DateTime endDate)
         {
             PayrollDataContext context = new PayrollDataContext();
+            return context.GetTimeSheetByEmployee(employeeId, startDate, endDate)
+                .Select(x =>
+                    new EmployeeTimeSheet() { 
+                    Id = x.id.HasValue ? x.id.Value : Guid.Empty,
+                    EmployeeId = x.EmployeeId.HasValue ? x.EmployeeId.Value: Guid.Empty,
+                    ReportedDate = x.ReportedDate.Value,
+                    DateTimeIn = x.DateTimeIn,
+                    DateTimeOut = x.DateTimeOut
+                    //IsDeleted = x.IsDeleted.Value
+                    })
+                 .ToList();
 
-            return context.EmployeeTimeSheets.Where(x=> x.IsDeleted == false && x.EmployeeId == employeeId).ToList();
+            //return context.EmployeeTimeSheets.Where(x=> x.IsDeleted == false && x.EmployeeId == employeeId).ToList();
 
         }
     }
