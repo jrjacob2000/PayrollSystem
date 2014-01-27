@@ -130,10 +130,24 @@ namespace Payroll.DataAccess.Core
 
         }
 
-        public List<EmployeeAddress> GetAddressList()
+        public void UpdateEmployeeAddress(EmployeeAddress address)
         {
             PayrollDataContext context = new PayrollDataContext();
-            return context.EmployeeAddresses.ToList();
+
+            var newAddress = context.EmployeeAddresses.Where(x => x.Id == address.Id).FirstOrDefault();
+            newAddress.Address = address.Address;
+            newAddress.CityMun = address.CityMun;
+            newAddress.ProvState = address.ProvState;
+            newAddress.CountryCode = address.CountryCode;
+            newAddress.ZipCode = address.ZipCode;
+
+            context.SubmitChanges();
+        }
+
+        public List<EmployeeAddress> GetEmployeeAddressList(Guid employeeId)
+        {
+            PayrollDataContext context = new PayrollDataContext();
+            return context.EmployeeAddresses.Where(x => x.EmployeeId == employeeId).ToList();
         }
     }
 }

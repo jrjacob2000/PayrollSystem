@@ -25,12 +25,12 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
 
         void btnEdit_Click(object sender, EventArgs e)
         {
-            Response.Redirect(string.Format("~/Pages/Administration/ReferenceManagement/Update.aspx?id={0}", Id));
+            Response.Redirect(string.Format("~/Pages/Administration/ReferenceManagement/Basic/Update.aspx?id={0}", Id));
         }
 
         void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Pages/Administration/ReferenceManagement/Default.aspx");
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/Basic/Default.aspx");
         }
 
         public override Operation SecurityContext

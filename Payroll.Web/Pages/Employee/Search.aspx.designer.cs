@@ -28,6 +28,6 @@ namespace Payroll.Web.Pages.Employee {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView grdEmployees;
+        protected global::Payroll.Web.Controls.ExtendedGridview grdEmployees;
     }
 }

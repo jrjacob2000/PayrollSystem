@@ -36,6 +36,12 @@ namespace Payroll.DataAccess
     partial void InsertEmployeeAddress(EmployeeAddress instance);
     partial void UpdateEmployeeAddress(EmployeeAddress instance);
     partial void DeleteEmployeeAddress(EmployeeAddress instance);
+    partial void InsertTaxTable(TaxTable instance);
+    partial void UpdateTaxTable(TaxTable instance);
+    partial void DeleteTaxTable(TaxTable instance);
+    partial void InsertEmployeeTimeSheet(EmployeeTimeSheet instance);
+    partial void UpdateEmployeeTimeSheet(EmployeeTimeSheet instance);
+    partial void DeleteEmployeeTimeSheet(EmployeeTimeSheet instance);
     #endregion
 		
 		public PayrollDataContext() : 
@@ -81,6 +87,22 @@ namespace Payroll.DataAccess
 			get
 			{
 				return this.GetTable<EmployeeAddress>();
+			}
+		}
+		
+		public System.Data.Linq.Table<TaxTable> TaxTables
+		{
+			get
+			{
+				return this.GetTable<TaxTable>();
+			}
+		}
+		
+		public System.Data.Linq.Table<EmployeeTimeSheet> EmployeeTimeSheets
+		{
+			get
+			{
+				return this.GetTable<EmployeeTimeSheet>();
 			}
 		}
 	}
@@ -151,6 +173,8 @@ namespace Payroll.DataAccess
 		
 		private EntitySet<EmployeeAddress> _EmployeeAddresses;
 		
+		private EntitySet<EmployeeTimeSheet> _EmployeeTimeSheets;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -218,6 +242,7 @@ namespace Payroll.DataAccess
 		public Employee()
 		{
 			this._EmployeeAddresses = new EntitySet<EmployeeAddress>(new Action<EmployeeAddress>(this.attach_EmployeeAddresses), new Action<EmployeeAddress>(this.detach_EmployeeAddresses));
+			this._EmployeeTimeSheets = new EntitySet<EmployeeTimeSheet>(new Action<EmployeeTimeSheet>(this.attach_EmployeeTimeSheets), new Action<EmployeeTimeSheet>(this.detach_EmployeeTimeSheets));
 			OnCreated();
 		}
 		
@@ -814,6 +839,19 @@ namespace Payroll.DataAccess
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_EmployeeTimeSheet", Storage="_EmployeeTimeSheets", ThisKey="Id", OtherKey="EmployeeId")]
+		public EntitySet<EmployeeTimeSheet> EmployeeTimeSheets
+		{
+			get
+			{
+				return this._EmployeeTimeSheets;
+			}
+			set
+			{
+				this._EmployeeTimeSheets.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -841,6 +879,18 @@ namespace Payroll.DataAccess
 		}
 		
 		private void detach_EmployeeAddresses(EmployeeAddress entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = null;
+		}
+		
+		private void attach_EmployeeTimeSheets(EmployeeTimeSheet entity)
+		{
+			this.SendPropertyChanging();
+			entity.Employee = this;
+		}
+		
+		private void detach_EmployeeTimeSheets(EmployeeTimeSheet entity)
 		{
 			this.SendPropertyChanging();
 			entity.Employee = null;
@@ -1110,6 +1160,387 @@ namespace Payroll.DataAccess
 					if ((value != null))
 					{
 						value.EmployeeAddresses.Add(this);
+						this._EmployeeId = value.Id;
+					}
+					else
+					{
+						this._EmployeeId = default(System.Guid);
+					}
+					this.SendPropertyChanged("Employee");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TaxTable")]
+	public partial class TaxTable : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private string _TaxCode;
+		
+		private string _Description;
+		
+		private decimal _Exemption;
+		
+		private bool _IsDeleted;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnTaxCodeChanging(string value);
+    partial void OnTaxCodeChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnExemptionChanging(decimal value);
+    partial void OnExemptionChanged();
+    partial void OnIsDeletedChanging(bool value);
+    partial void OnIsDeletedChanged();
+    #endregion
+		
+		public TaxTable()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_TaxCode", DbType="NVarChar(50) NOT NULL", CanBeNull=false)]
+		public string TaxCode
+		{
+			get
+			{
+				return this._TaxCode;
+			}
+			set
+			{
+				if ((this._TaxCode != value))
+				{
+					this.OnTaxCodeChanging(value);
+					this.SendPropertyChanging();
+					this._TaxCode = value;
+					this.SendPropertyChanged("TaxCode");
+					this.OnTaxCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(250)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Exemption", DbType="Decimal(18,4) NOT NULL")]
+		public decimal Exemption
+		{
+			get
+			{
+				return this._Exemption;
+			}
+			set
+			{
+				if ((this._Exemption != value))
+				{
+					this.OnExemptionChanging(value);
+					this.SendPropertyChanging();
+					this._Exemption = value;
+					this.SendPropertyChanged("Exemption");
+					this.OnExemptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDeleted", DbType="Bit NOT NULL")]
+		public bool IsDeleted
+		{
+			get
+			{
+				return this._IsDeleted;
+			}
+			set
+			{
+				if ((this._IsDeleted != value))
+				{
+					this.OnIsDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._IsDeleted = value;
+					this.SendPropertyChanged("IsDeleted");
+					this.OnIsDeletedChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.EmployeeTimeSheet")]
+	public partial class EmployeeTimeSheet : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private System.Guid _Id;
+		
+		private System.Guid _EmployeeId;
+		
+		private System.DateTime _ReportedDate;
+		
+		private System.DateTime _DateTimeIn;
+		
+		private System.DateTime _DateTimeOut;
+		
+		private System.Nullable<bool> _IsDeleted;
+		
+		private EntityRef<Employee> _Employee;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(System.Guid value);
+    partial void OnIdChanged();
+    partial void OnEmployeeIdChanging(System.Guid value);
+    partial void OnEmployeeIdChanged();
+    partial void OnReportedDateChanging(System.DateTime value);
+    partial void OnReportedDateChanged();
+    partial void OnDateTimeInChanging(System.DateTime value);
+    partial void OnDateTimeInChanged();
+    partial void OnDateTimeOutChanging(System.DateTime value);
+    partial void OnDateTimeOutChanged();
+    partial void OnIsDeletedChanging(System.Nullable<bool> value);
+    partial void OnIsDeletedChanged();
+    #endregion
+		
+		public EmployeeTimeSheet()
+		{
+			this._Employee = default(EntityRef<Employee>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Id", DbType="UniqueIdentifier NOT NULL", IsPrimaryKey=true)]
+		public System.Guid Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeId", DbType="UniqueIdentifier NOT NULL")]
+		public System.Guid EmployeeId
+		{
+			get
+			{
+				return this._EmployeeId;
+			}
+			set
+			{
+				if ((this._EmployeeId != value))
+				{
+					if (this._Employee.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnEmployeeIdChanging(value);
+					this.SendPropertyChanging();
+					this._EmployeeId = value;
+					this.SendPropertyChanged("EmployeeId");
+					this.OnEmployeeIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReportedDate", DbType="Date NOT NULL")]
+		public System.DateTime ReportedDate
+		{
+			get
+			{
+				return this._ReportedDate;
+			}
+			set
+			{
+				if ((this._ReportedDate != value))
+				{
+					this.OnReportedDateChanging(value);
+					this.SendPropertyChanging();
+					this._ReportedDate = value;
+					this.SendPropertyChanged("ReportedDate");
+					this.OnReportedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeIn", DbType="DateTime NOT NULL")]
+		public System.DateTime DateTimeIn
+		{
+			get
+			{
+				return this._DateTimeIn;
+			}
+			set
+			{
+				if ((this._DateTimeIn != value))
+				{
+					this.OnDateTimeInChanging(value);
+					this.SendPropertyChanging();
+					this._DateTimeIn = value;
+					this.SendPropertyChanged("DateTimeIn");
+					this.OnDateTimeInChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeOut", DbType="DateTime NOT NULL")]
+		public System.DateTime DateTimeOut
+		{
+			get
+			{
+				return this._DateTimeOut;
+			}
+			set
+			{
+				if ((this._DateTimeOut != value))
+				{
+					this.OnDateTimeOutChanging(value);
+					this.SendPropertyChanging();
+					this._DateTimeOut = value;
+					this.SendPropertyChanged("DateTimeOut");
+					this.OnDateTimeOutChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDeleted", DbType="Bit")]
+		public System.Nullable<bool> IsDeleted
+		{
+			get
+			{
+				return this._IsDeleted;
+			}
+			set
+			{
+				if ((this._IsDeleted != value))
+				{
+					this.OnIsDeletedChanging(value);
+					this.SendPropertyChanging();
+					this._IsDeleted = value;
+					this.SendPropertyChanged("IsDeleted");
+					this.OnIsDeletedChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="Employee_EmployeeTimeSheet", Storage="_Employee", ThisKey="EmployeeId", OtherKey="Id", IsForeignKey=true)]
+		public Employee Employee
+		{
+			get
+			{
+				return this._Employee.Entity;
+			}
+			set
+			{
+				Employee previousValue = this._Employee.Entity;
+				if (((previousValue != value) 
+							|| (this._Employee.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Employee.Entity = null;
+						previousValue.EmployeeTimeSheets.Remove(this);
+					}
+					this._Employee.Entity = value;
+					if ((value != null))
+					{
+						value.EmployeeTimeSheets.Add(this);
 						this._EmployeeId = value.Id;
 					}
 					else

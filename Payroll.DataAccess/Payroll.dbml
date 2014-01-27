@@ -32,6 +32,7 @@
       <Column Name="EmployeeStatus" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
       <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="Employee_EmployeeAddress" Member="EmployeeAddresses" ThisKey="Id" OtherKey="EmployeeId" Type="EmployeeAddress" />
+      <Association Name="Employee_EmployeeTimeSheet" Member="EmployeeTimeSheets" ThisKey="Id" OtherKey="EmployeeId" Type="EmployeeTimeSheet" />
     </Type>
   </Table>
   <Table Name="dbo.EmployeeAddress" Member="EmployeeAddresses">
@@ -46,6 +47,26 @@
       <Column Name="ZipCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="IsDeleted" Type="System.Int64" DbType="BigInt NOT NULL" CanBeNull="false" />
       <Association Name="Employee_EmployeeAddress" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TaxTable" Member="TaxTables">
+    <Type Name="TaxTable">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="TaxCode" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="Exemption" Type="System.Decimal" DbType="Decimal(18,4) NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.EmployeeTimeSheet" Member="EmployeeTimeSheets">
+    <Type Name="EmployeeTimeSheet">
+      <Column Name="Id" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="EmployeeId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="ReportedDate" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="DateTimeIn" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="DateTimeOut" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Employee_EmployeeTimeSheet" Member="Employee" ThisKey="EmployeeId" OtherKey="Id" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
 </Database>

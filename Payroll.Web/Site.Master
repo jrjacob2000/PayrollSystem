@@ -11,8 +11,10 @@
         - IntelliSoft Payroll System</title>
     <script type="text/javascript" src="/Scripts/jquery-ui-1.10.3/jquery-1.10.2.js"></script>
     <script type="text/javascript" src="/Scripts/jquery-ui-1.10.3/ui/jquery-ui.js"></script>
-    
+    <script type="text/javascript" src="/Scripts/jquery-ui-1.10.3/ui/globalize.js"></script>
     <link type="text/css" rel="stylesheet" href="~/App_Themes/ui-lightness/jquery-ui.css">
+
+
     <link href="~/Styles/site.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/menu.css" rel="stylesheet" type="text/css" />
     <link href="~/Styles/ExtendedGrid.css" rel="stylesheet" type="text/css" />
@@ -30,7 +32,7 @@
                     $(".addButton").button({ icons: { primary: "ui-icon-plusthick" } });
 
                 })
-                
+
        );
 
     </script>
@@ -38,11 +40,11 @@
 </head>
 <body>
     <form id="Form1" runat="server">
-    <asp:ScriptManager ID="ScriptManager1" runat="server">
-        <Scripts>
-        </Scripts>
-    </asp:ScriptManager>
-    <header>
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts>
+            </Scripts>
+        </asp:ScriptManager>
+        <header>
             <div class="content-wrapper">
                 <div class="float-left">
                     <p class="site-title">
@@ -75,32 +77,39 @@
             </div>
 
         </header>
-    <div>
-        <%--<asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />--%>
-        <section class="featured">
+        <div>
+            <%--<asp:ContentPlaceHolder runat="server" ID="FeaturedContent" />--%>
+            <section class="featured">
                 <uc1:MainHorizonalSiteMapConcreate runat="server" ID="horizontalSiteMap" />
             </section>
-        <section class="featured">
-                <div class="content-wrapper">
-                    <hgroup class="title">
-                        <h2><%: Page.Title %></h2>
-                    </hgroup>
+
+            <section class="content-wrapper">
+            </section>
+            <section class="content-wrapper main-content clear-fix" style="padding-left :40px;padding-right :40px">
+            <%--<section>--%>
+                <div class ="body" style="float :left; width :200px; position :absolute " >
+                    <asp:ContentPlaceHolder runat="server" ID="LeftContent" />
                 </div>
-            </section>
-        <section class="content-wrapper">
-            </section>
-        <section class="content-wrapper main-content clear-fix">
-                <div id="body">
-                    <div id="divMessage" runat="server" enableviewstate="false" style ="border-radius :5px; padding-top :6px; padding-bottom :6px">
+
+                <div  class ="body"  style="  margin-left  :205px;">
+                    
+                    <section class="featured" style ="border-radius:5px">
+                        <div class="content-wrapper">
+                            <hgroup class="title">
+                                <h2><%: Page.Title %></h2>
+                            </hgroup>
+                        </div>
+                    </section>
+                    <div id="divMessage" runat="server" enableviewstate="false" style="border-radius: 5px; padding-top: 6px; padding-bottom: 6px">
                         <asp:Literal ID="lblMessage" runat="server"></asp:Literal>
                     </div>
-                    <div style="padding:10px 25px 35px 25px;" >
+                    <div style="padding: 0px 25px 35px 25px;">
                         <asp:ContentPlaceHolder runat="server" ID="MainContent" />
                     </div>
                 </div>
             </section>
-    </div>
-    <footer>
+        </div>
+        <footer>
             <div class="content-wrapper">
                 <div class="float-left">
                     <p>
@@ -129,7 +138,7 @@
             }
             return true;
         }
-</script>
+    </script>
 </body>
 
 </html>

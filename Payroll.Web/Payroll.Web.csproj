@@ -85,10 +85,12 @@
     <Content Include="Pages\Administration\AccountManagement\Default.aspx" />
     <Content Include="Pages\Administration\AccountManagement\Update.aspx" />
     <Content Include="Pages\Administration\AccountManagement\View.aspx" />
-    <Content Include="Pages\Administration\ReferenceManagement\Update.aspx" />
-    <Content Include="Pages\Administration\ReferenceManagement\Create.aspx" />
-    <Content Include="Pages\Administration\ReferenceManagement\Default.aspx" />
-    <Content Include="Pages\Administration\ReferenceManagement\View.aspx" />
+    <Content Include="Pages\Administration\ReferenceManagement\TaxTable\Create.aspx" />
+    <Content Include="Pages\Administration\ReferenceManagement\TaxTable\Default.aspx" />
+    <Content Include="Pages\Administration\ReferenceManagement\Basic\Update.aspx" />
+    <Content Include="Pages\Administration\ReferenceManagement\Basic\Create.aspx" />
+    <Content Include="Pages\Administration\ReferenceManagement\Basic\Default.aspx" />
+    <Content Include="Pages\Administration\ReferenceManagement\Basic\View.aspx" />
     <Content Include="Pages\Administration\RoleManagement\Default.aspx" />
     <Content Include="Pages\Employee\Address\AddressGrid.ascx" />
     <Content Include="Pages\Employee\Address\CreateAddress.ascx" />
@@ -98,6 +100,13 @@
     <Content Include="Pages\Employee\Update.aspx" />
     <Content Include="Pages\Public\Login.aspx" />
     <Content Include="App_Themes\default\skin1.skin" />
+    <Content Include="Pages\TimeSheet\CreateTimeLog.ascx" />
+    <Content Include="Pages\TimeSheet\Default.aspx" />
+    <Content Include="Pages\WebForm1.aspx" />
+    <Content Include="Pages\WebForm2.aspx" />
+    <Content Include="Scripts\jquery-ui-1.10.3\ui\globalize.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3\ui\jquery.ui.spinner.js" />
+    <Content Include="Scripts\jquery-ui-1.10.3\ui\jquery.ui.widget.js" />
     <Content Include="WebServices\PayrollWebService.asmx" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Pages\Public\UnAuthorized.aspx" />
@@ -199,32 +208,46 @@
     <Compile Include="Pages\Administration\AccountManagement\View.aspx.designer.cs">
       <DependentUpon>View.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Administration\ReferenceManagement\Update.aspx.cs">
-      <DependentUpon>Update.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pages\Administration\ReferenceManagement\Update.aspx.designer.cs">
-      <DependentUpon>Update.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Administration\ReferenceManagement\Create.aspx.cs">
+    <Compile Include="Pages\Administration\ReferenceManagement\TaxTable\Create.aspx.cs">
       <DependentUpon>Create.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Administration\ReferenceManagement\Create.aspx.designer.cs">
+    <Compile Include="Pages\Administration\ReferenceManagement\TaxTable\Create.aspx.designer.cs">
       <DependentUpon>Create.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Administration\ReferenceManagement\Default.aspx.cs">
+    <Compile Include="Pages\Administration\ReferenceManagement\TaxTable\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Administration\ReferenceManagement\Default.aspx.designer.cs">
+    <Compile Include="Pages\Administration\ReferenceManagement\TaxTable\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Administration\ReferenceManagement\View.aspx.cs">
+    <Compile Include="Pages\Administration\ReferenceManagement\Basic\Update.aspx.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\ReferenceManagement\Basic\Update.aspx.designer.cs">
+      <DependentUpon>Update.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\ReferenceManagement\Basic\Create.aspx.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\ReferenceManagement\Basic\Create.aspx.designer.cs">
+      <DependentUpon>Create.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\ReferenceManagement\Basic\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\Administration\ReferenceManagement\Basic\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Administration\ReferenceManagement\Basic\View.aspx.cs">
       <DependentUpon>View.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Pages\Administration\ReferenceManagement\View.aspx.designer.cs">
+    <Compile Include="Pages\Administration\ReferenceManagement\Basic\View.aspx.designer.cs">
       <DependentUpon>View.aspx</DependentUpon>
     </Compile>
     <Compile Include="Pages\Administration\RoleManagement\Default.aspx.cs">
@@ -293,6 +316,31 @@
     </Compile>
     <Compile Include="Pages\Public\WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TimeSheet\CreateTimeLog.ascx.cs">
+      <DependentUpon>CreateTimeLog.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TimeSheet\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TimeSheet\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\WebForm2.aspx.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\WebForm2.aspx.designer.cs">
+      <DependentUpon>WebForm2.aspx</DependentUpon>
     </Compile>
     <Compile Include="PermissionProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

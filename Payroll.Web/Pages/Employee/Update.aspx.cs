@@ -60,9 +60,29 @@ namespace Payroll.Web.Pages.Employee
                 employee.CurrentSalary = txtCurrentSalary.Text.ToDecimal();
                 employee.BankNameCode = ddlBankName.SelectedValue;
                 employee.AccountNumber = txtAccountNumber.Text.ToNullableInteger();
-                employee.EmployeeStatus = ddlEmpStatus.SelectedValue;              
+                employee.EmployeeStatus = ddlEmpStatus.SelectedValue;
+
+                DataAccess.EmployeeAddress address = empService.GetEmployeeAddressList(employee.Id).FirstOrDefault();
+                if (address == null)
+                {
+                    address = new DataAccess.EmployeeAddress();
+                    address.AddressTypeCode = "Permanent";
+                    address.EmployeeId = employee.Id;
+                }
+                address.Address = txtAddress.Text;
+                address.CityMun = TxtCityMun.Text;
+                address.ProvState = string.IsNullOrEmpty(txtProvState.Text) ? null : txtProvState.Text;
+                address.CountryCode = string.IsNullOrEmpty(ddlCountry.SelectedValue) ? null : ddlCountry.SelectedValue;
+                address.ZipCode = txtZipCode.Text;
                                
                 empService.Update(employee);
+
+                if (address.Id == null || address.Id == Guid.Empty)                
+                    empService.CreateAddress(address);
+                else
+                    empService.UpdateEmployeeAddress(address);
+     
+
                 SetMessage(MessageType.Succes, "Saving successfull",true);
 
                 RedirectToReferrerUrl();
@@ -111,6 +131,16 @@ namespace Payroll.Web.Pages.Employee
             ddlBankName.SelectedValue  = employee.BankNameCode;
             txtAccountNumber.Text = employee.AccountNumber.ToString();
             ddlEmpStatus.SelectedValue = employee.EmployeeStatus;
+
+            var empAddress = empService.GetEmployeeAddressList(employee.Id).FirstOrDefault();
+            if (empAddress != null)
+            {
+                txtAddress.Text = empAddress.Address;
+                TxtCityMun.Text = empAddress.CityMun;
+                txtProvState.Text = empAddress.ProvState;
+                txtZipCode.Text = empAddress.ZipCode;
+                ddlCountry.SelectedValue = empAddress.CountryCode;
+            }
                 
         }
     }

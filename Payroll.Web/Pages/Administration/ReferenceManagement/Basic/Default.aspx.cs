@@ -50,7 +50,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
         
         void btnNewReference_ServerClick(object sender, EventArgs e)
         {
-            Response.Redirect("~/Pages/Administration/ReferenceManagement/Create.aspx?reftypecode=ROLE");
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/Basic/Create.aspx?reftypecode=ROLE");
         }
                
 
@@ -75,7 +75,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
             var item = (Guid)e.Keys["Id"];
             DataAccess.Security.DReferences service = new DataAccess.Security.DReferences();
             service.DeleteReference(item);
-            Response.Redirect("~/Pages/Administration/ReferenceManagement/Default.aspx");
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/Basic/Default.aspx");
         }
 
 
@@ -86,7 +86,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
             GridView gvDetails = (GridView)sender;
 
             var item = gvDetails.Rows[e.NewEditIndex];
-            Response.Redirect("~/Pages/Administration/ReferenceManagement/update.aspx?id=" + item.Cells[0].Text);
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/Basic/update.aspx?id=" + item.Cells[0].Text);
             //DataAccess.Security.DReferences service = new DataAccess.Security.DReferences();
             //service.DeleteReference(item);
         }

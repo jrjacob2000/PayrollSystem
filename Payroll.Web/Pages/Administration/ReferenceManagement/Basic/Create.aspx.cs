@@ -44,7 +44,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
                 service.CreateReference(entity);
 
                 SetMessage(MessageType.Succes, "Save successfull.",true);
-                Response.Redirect("~/Pages/Administration/ReferenceManagement/Default.aspx");
+                Response.Redirect("~/Pages/Administration/ReferenceManagement/Basic/Default.aspx");
             }
             catch (Exception ex)
             {
@@ -54,7 +54,7 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
 
         void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Pages/Administration/ReferenceManagement/Default.aspx");
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/Basic/Default.aspx");
         }
 
         void InitializeControl()

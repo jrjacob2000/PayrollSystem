@@ -17,9 +17,26 @@ namespace Payroll.Web.WebServices
     {
 
         [WebMethod]
-        public string HelloWorld()
+        public string CreateTimeSheet(CreateTimeSheetRequest request)
         {
-            return "Hello World";
+            DataAccess.Core.DATimeSheet service = new DataAccess.Core.DATimeSheet();
+            DataAccess.EmployeeTimeSheet entity = new DataAccess.EmployeeTimeSheet();
+            entity.Id = Guid.NewGuid();
+            entity.EmployeeId = new Guid(request.EmpId);
+            entity.ReportedDate = DateTime.Parse( request.Date );
+            entity.DateTimeIn = DateTime.Parse(request.DateTimeIn);
+            entity.DateTimeOut = DateTime.Parse(request.DateTimeOut);
+
+            if(entity.DateTimeIn > entity.ReportedDate )
+                return ("Date timein cannot be greater than Reported date");
+            
+            if(entity.DateTimeOut > entity.DateTimeIn)
+                return ("Date timeout cannot be greater than Date timein");
+            
+
+            service.Create(entity);
+            return "Saving successful";
+
         }
 
         [WebMethod]
@@ -68,6 +85,15 @@ namespace Payroll.Web.WebServices
         public string provState { get; set; }
         //public string country { get; set; }
         public string zipcode { get; set; }
+                   
+    }
+
+    public class CreateTimeSheetRequest
+    {
+        public string EmpId { get; set; }
+        public string Date {get;set;}
+        public string DateTimeIn { get; set; }
+        public string DateTimeOut { get; set; }
                    
     }
 }

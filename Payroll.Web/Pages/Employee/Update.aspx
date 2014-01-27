@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Update.aspx.cs" Inherits="Payroll.Web.Pages.Employee.Update" %>
+<%@ Page Title="Edit Employee" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Update.aspx.cs" Inherits="Payroll.Web.Pages.Employee.Update" %>
 <%@ Register TagPrefix="uc" TagName="DropDownReference" Src="~/Controls/ReferenceDropDown.ascx" %>
 <%@ Register TagPrefix="uc" TagName="TextBox" Src="~/Controls/ExtendedTextBox.ascx" %>
 
@@ -294,6 +294,6 @@
             <asp:Button ID="btnCancel" runat="server" CssClass="ui-button-text-only" Text="Cancel" CausesValidation="false" />
             <asp:Button ID="btnSave" runat="server" Text="Save" />
         </div>
-        <uc:CreateAddressDialog id="dialogAddress" runat="server"></uc:CreateAddressDialog>
+        <%--<uc:CreateAddressDialog id="dialogAddress" runat="server"></uc:CreateAddressDialog>--%>
     </div>
 </asp:Content>

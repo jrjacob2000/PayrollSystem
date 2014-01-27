@@ -37,18 +37,18 @@ namespace Payroll.Web.Pages.Administration.ReferenceManagement
                 refData.UpdateReference(refEntity);
 
                 SetMessage(MessageType.Succes, "Saving successful", true);
-                Response.Redirect("~/Pages/Administration/ReferenceManagement/Default.aspx",false);
+                Response.Redirect("~/Pages/Administration/ReferenceManagement/Basic/Default.aspx",false);
             }
             catch (Exception ex)
             {
                 SetMessage(MessageType.Error, "Saving Fail", true);
-                Response.Redirect("~/Pages/Administration/ReferenceManagement/Default.aspx",false);
+                Response.Redirect("~/Pages/Administration/ReferenceManagement/Basic/Default.aspx", false);
             }
         }
 
         void btnCancel_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Pages/Administration/ReferenceManagement/Default.aspx");
+            Response.Redirect("~/Pages/Administration/ReferenceManagement/Basic/Default.aspx");
         }
 
         public override Operation SecurityContext

@@ -29,7 +29,7 @@ namespace Payroll.Web.Controls
                 {
                     foreach (NavigationNode childNode in Nodes)
                     {
-                        HorizontalMenuItem menuItem = new HorizontalMenuItem(childNode.Text);
+                        HorizontalMenuItem menuItem = new HorizontalMenuItem(childNode.Text,childNode.Url);
                         menuItem.ChildItems.AddRange(GetSubItems(childNode));
                         this._items.Add(menuItem);
                     }

@@ -32,26 +32,15 @@ namespace Payroll.Web
             }
         }
 
-        //public class EditLab : SGSOperation
-        //{
-        //    public Guid? LaboratoryId { get; set; }
-        //    public override string Description
-        //    {
-        //        get { return "Edit Laboratories"; }
-        //    }
-        //}
 
-        ////LAB-767_IF009_Security_Capability_management
-        //public class EditCapability : SGSOperation
-        //{
-        //    public Guid? LaboratoryId { get; set; }
-        //    public override string Description
-        //    {
-        //        get { return "Edit Laboratories"; }
-        //    }
-        //}
-
-       
+        public class ViewTimeSheet : Operation
+        {
+            public override string Description
+            {
+                get { return "TimeSheet"; }
+            }
+        }
+             
 
     }
 

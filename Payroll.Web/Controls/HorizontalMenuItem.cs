@@ -27,6 +27,12 @@ namespace Payroll.Web.Controls
             set;
         }
 
+        public string NavigateUrl
+        {
+            get;
+            set;
+        }
+
         #endregion
 
         #region Constructors
@@ -36,7 +42,14 @@ namespace Payroll.Web.Controls
         public HorizontalMenuItem(string text)
         {
             _childItems = new HorizontalSubMenuItemCollection();
+            Text = text; 
+        }
+
+        public HorizontalMenuItem(string text, string navigateUrl)
+        {
+            _childItems = new HorizontalSubMenuItemCollection();
             Text = text;
+            NavigateUrl = navigateUrl;
         }
 
         #endregion
@@ -53,11 +66,21 @@ namespace Payroll.Web.Controls
             htmlTextWriter.RenderBeginTag(HtmlTextWriterTag.Li);
             // <span>
             htmlTextWriter.RenderBeginTag(HtmlTextWriterTag.Span);
-            //htmlTextWriter.AddAttribute(HtmlTextWriterAttribute.Href, "/");
-            //htmlTextWriter.RenderBeginTag(HtmlTextWriterTag.A);
+            if (!string.IsNullOrEmpty(NavigateUrl))
+            {
+                htmlTextWriter.AddAttribute(HtmlTextWriterAttribute.Href, NavigateUrl);
+                htmlTextWriter.RenderBeginTag(HtmlTextWriterTag.A);
 
-            // Text
-            htmlTextWriter.Write(Text);
+                // Text
+                htmlTextWriter.Write(Text);
+
+                // </a>
+                htmlTextWriter.RenderEndTag();
+            }
+            else
+                // Text
+                htmlTextWriter.Write(Text);        
+           
 
             // </span>
             htmlTextWriter.RenderEndTag();

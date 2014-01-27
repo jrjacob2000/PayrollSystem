@@ -5,7 +5,7 @@ using System.Web;
 using Framework;
 
 
-namespace System.Web
+namespace Payroll.Web
 {
     public class BasePage: System.Web.UI.Page
     {

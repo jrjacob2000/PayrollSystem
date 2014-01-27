@@ -17,11 +17,11 @@ namespace Payroll.Web.Pages.Employee.Address
 
         void bind()
         {
-            DataAccess.Core.DAEmployee service = new DataAccess.Core.DAEmployee();
-            var data = service.GetAddressList();
+            //DataAccess.Core.DAEmployee service = new DataAccess.Core.DAEmployee();
+            //var data = service.GetEmployeeAddressList();
 
-            grdAddress.DataSource = data;
-            grdAddress.DataBind();           
+            //grdAddress.DataSource = data;
+            //grdAddress.DataBind();           
 
         }
     }

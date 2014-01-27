@@ -55,13 +55,27 @@ namespace Payroll.Web.Pages.Employee
                 employee.AccountNumber = txtAccountNumber.Text.ToNullableInteger();
                 employee.EmployeeStatus = ddlEmpStatus.SelectedValue;
 
+                DataAccess.EmployeeAddress address = new DataAccess.EmployeeAddress();
+                address.AddressTypeCode = "Permanent";
+                address.Address = txtAddress.Text;
+                address.CityMun = TxtCityMun.Text;
+                address.ProvState = string.IsNullOrEmpty(txtProvState.Text) ? null: txtProvState.Text;
+                address.CountryCode = string.IsNullOrEmpty(ddlCountry.SelectedValue)? null: ddlCountry.SelectedValue;
+                address.ZipCode = txtZipCode.Text;
+
                 DAEmployee empService = new DAEmployee();
 
                 var exist = empService.FindByEmployeeNumber(employee.EmployeeNumber);
 
                 if (exist == null)
                 {
-                    empService.Create(employee);
+                    //save employee and return the id
+                    var id = empService.Create(employee);
+
+                    //save address
+                    address.EmployeeId = id;
+                    empService.CreateAddress(address);
+
                     SetMessage(MessageType.Succes, "Saving successfull");
                 }
                 else

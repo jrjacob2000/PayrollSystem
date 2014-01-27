@@ -20,7 +20,7 @@ namespace Payroll.Web
         NavigationNodesList result = new NavigationNodesList();
 
         //Home
-        if (new Operations.ViewHome().IsAuthorized())
+        if (new Operations.ViewEmployee().IsAuthorized())
         {
             NavigationNode Administrator = result.Add("Home", "/Default.aspx");
         }
@@ -31,13 +31,21 @@ namespace Payroll.Web
             Employee.Add("New Employee", "/Pages/Employee/Create.aspx");
             Employee.Add("Search Employee", "/Pages/Employee/Search.aspx"); 
         }
+
+        if (new Operations.ViewTimeSheet().IsAuthorized())
+        {
+            NavigationNode TimeSheet = result.Add("Time Sheet", "/Pages/TimeSheet/Default.aspx");
+
+        }
        
 
         // Administration
         if (new Operations.ManageReferencesSecurity().IsAuthorized())
         {
             NavigationNode Administrator = result.Add("Administrator");
-            Administrator.Add("Reference Management", "~/Pages/Administration/ReferenceManagement/Default.aspx");
+            NavigationNode reference = Administrator.Add("Reference Management", string.Empty);
+            reference.Add("Basic", "~/Pages/Administration/ReferenceManagement/Basic/Default.aspx");
+            reference.Add("Tax Table", "~/Pages/Administration/ReferenceManagement/TaxTable/Default.aspx");
 
             NavigationNode secMgmt = Administrator.Add("Security Management", string.Empty);
             secMgmt.Add("User Management", "~/Pages/Administration/AccountManagement/Default.aspx");

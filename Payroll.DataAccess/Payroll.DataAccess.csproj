@@ -40,10 +40,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core.designer.cs">
+    <Compile Include="Core\DATaxTable.cs" />
+    <Compile Include="Core\DATimeSheet.cs" />
+    <Compile Include="Payroll.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Core.dbml</DependentUpon>
+      <DependentUpon>Payroll.dbml</DependentUpon>
     </Compile>
     <Compile Include="Core\DAEmployee.cs" />
     <Compile Include="Entity\ReferenceType.cs" />
@@ -67,13 +69,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Core.dbml">
+    <None Include="Payroll.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>Core.designer.cs</LastGenOutput>
+      <LastGenOutput>Payroll.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Core.dbml.layout">
-      <DependentUpon>Core.dbml</DependentUpon>
+    <None Include="Payroll.dbml.layout">
+      <DependentUpon>Payroll.dbml</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

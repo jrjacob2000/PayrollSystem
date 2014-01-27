@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace System.Web
+namespace Payroll.Web
 {
     public abstract class Operation
     {
