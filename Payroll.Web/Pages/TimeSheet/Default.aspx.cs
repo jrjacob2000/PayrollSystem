@@ -9,11 +9,28 @@ namespace Payroll.Web.Pages.TimeSheet
 {
     public partial class Default : BasePage
     {
+        private DateTime StartDate
+        {
+            get {
+                if (ViewState["StartDate"] == null)
+                    return DateTime.Now.GetFirstDayOfWeek().Date.AddDays(1);
+                else
+                    return (DateTime)ViewState["StartDate"];
+            }
+            set {
+                ViewState["StartDate"] = value;
+            }
+        }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             
             btnGo.ServerClick += btnGo_ServerClick;
             ddlEmployee.SelectedIndexChanged += ddlEmployee_SelectedIndexChanged;
+            grdTimeLog.RowDataBound += new GridViewRowEventHandler(grdTimeLog_RowDataBound);
+            btnNext.ServerClick += new EventHandler(btnNext_ServerClick);
+            btnPrev.ServerClick += new EventHandler(btnPrev_ServerClick);
+
             if (!IsPostBack)
             {
                 
@@ -24,6 +41,29 @@ namespace Payroll.Web.Pages.TimeSheet
             }
         }
 
+        void btnPrev_ServerClick(object sender, EventArgs e)
+        {
+            StartDate = StartDate.AddDays(-7).Date;
+            BindTimeSheet();
+        }
+
+        void btnNext_ServerClick(object sender, EventArgs e)
+        {
+            StartDate = StartDate.AddDays(7).Date;
+            BindTimeSheet();
+        }
+
+        void grdTimeLog_RowDataBound(object sender, GridViewRowEventArgs e)
+        {
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                var remarks = e.Row.Cells[3].Text.ToLower();
+                if (remarks == "saturday" || remarks == "sunday")
+                    e.Row.CssClass = "gridAlternating";                                
+            }
+        }
+
+       
         void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
             dialogTimeSheet.EmployeeId = ddlEmployee.SelectedValue;
@@ -32,13 +72,14 @@ namespace Payroll.Web.Pages.TimeSheet
 
         void btnGo_ServerClick(object sender, EventArgs e)
         {
+            
             BindTimeSheet();
         }
 
         void BindTimeSheet()
         {
             DataAccess.Core.DATimeSheet service = new DataAccess.Core.DATimeSheet();
-            var startDate = DateTime.Now.GetFirstDayOfWeek().Date;
+            var startDate = StartDate;
             var endDate = startDate.AddDays(7).Date;
             var data = service.GetListByEmployee(new Guid(ddlEmployee.SelectedValue), startDate, endDate);
             grdTimeLog.DataSource = data;
