@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Core\DATaxTable.cs" />
     <Compile Include="Core\DATimeSheet.cs" />
+    <Compile Include="Entity\TimeSheet.cs" />
     <Compile Include="Payroll.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

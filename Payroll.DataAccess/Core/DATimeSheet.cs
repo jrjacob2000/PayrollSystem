@@ -36,8 +36,7 @@ namespace Payroll.DataAccess.Core
 
         public EmployeeTimeSheet GetById(Guid id)
         {
-            PayrollDataContext context = new PayrollDataContext();
-            
+            PayrollDataContext context = new PayrollDataContext();            
 
             return context.EmployeeTimeSheets.Where(x => x.Id == id).FirstOrDefault();
 
@@ -57,18 +56,19 @@ namespace Payroll.DataAccess.Core
 
         }
 
-        public List<EmployeeTimeSheet> GetListByEmployee(Guid employeeId,DateTime startDate, DateTime endDate)
+        public List<Entity.TimeSheet> GetListByEmployee(Guid employeeId, DateTime startDate, DateTime endDate)
         {
             PayrollDataContext context = new PayrollDataContext();
             return context.GetTimeSheetByEmployee(employeeId, startDate, endDate)
                 .Select(x =>
-                    new EmployeeTimeSheet() { 
+                    new Entity.TimeSheet()
+                    { 
                     Id = x.id.HasValue ? x.id.Value : Guid.Empty,
                     EmployeeId = x.EmployeeId.HasValue ? x.EmployeeId.Value: Guid.Empty,
                     ReportedDate = x.ReportedDate.Value,
                     DateTimeIn = x.DateTimeIn,
-                    DateTimeOut = x.DateTimeOut
-                    //IsDeleted = x.IsDeleted.Value
+                    DateTimeOut = x.DateTimeOut,
+                    Remarks = x.Remarks
                     })
                  .ToList();
 

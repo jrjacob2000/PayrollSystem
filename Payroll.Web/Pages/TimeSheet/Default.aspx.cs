@@ -9,7 +9,7 @@ namespace Payroll.Web.Pages.TimeSheet
 {
     public partial class Default : BasePage
     {
-        private DateTime StartDate
+        protected DateTime StartDate
         {
             get {
                 if (ViewState["StartDate"] == null)
@@ -27,15 +27,14 @@ namespace Payroll.Web.Pages.TimeSheet
             
             btnGo.ServerClick += btnGo_ServerClick;
             ddlEmployee.SelectedIndexChanged += ddlEmployee_SelectedIndexChanged;
-            grdTimeLog.RowDataBound += new GridViewRowEventHandler(grdTimeLog_RowDataBound);
+            //grdTimeLog.RowDataBound += new GridViewRowEventHandler(grdTimeLog_RowDataBound);
             btnNext.ServerClick += new EventHandler(btnNext_ServerClick);
             btnPrev.ServerClick += new EventHandler(btnPrev_ServerClick);
 
             if (!IsPostBack)
             {
-                
                 BindEmployee();
-                dialogTimeSheet.EmployeeId = ddlEmployee.SelectedValue;
+                grdTimeSheet.EmployeeId = new Guid(ddlEmployee.SelectedValue);
                 BindTimeSheet();
                 
             }
@@ -53,20 +52,10 @@ namespace Payroll.Web.Pages.TimeSheet
             BindTimeSheet();
         }
 
-        void grdTimeLog_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-            if (e.Row.RowType == DataControlRowType.DataRow)
-            {
-                var remarks = e.Row.Cells[3].Text.ToLower();
-                if (remarks == "saturday" || remarks == "sunday")
-                    e.Row.CssClass = "gridAlternating";                                
-            }
-        }
-
+       
        
         void ddlEmployee_SelectedIndexChanged(object sender, EventArgs e)
         {
-            dialogTimeSheet.EmployeeId = ddlEmployee.SelectedValue;
             BindTimeSheet();
         }
 
@@ -78,12 +67,10 @@ namespace Payroll.Web.Pages.TimeSheet
 
         void BindTimeSheet()
         {
-            DataAccess.Core.DATimeSheet service = new DataAccess.Core.DATimeSheet();
-            var startDate = StartDate;
-            var endDate = startDate.AddDays(7).Date;
-            var data = service.GetListByEmployee(new Guid(ddlEmployee.SelectedValue), startDate, endDate);
-            grdTimeLog.DataSource = data;
-            grdTimeLog.DataBind();
+            grdTimeSheet.EmployeeId = new Guid(ddlEmployee.SelectedValue);
+            grdTimeSheet.StartDate = StartDate;
+            grdTimeSheet.BindTimeSheet();
+
         }
 
         void BindEmployee()

@@ -10,6 +10,19 @@ namespace Payroll.Web.Controls
     [ToolboxData("<{0}:ExtendedGridview runat=server></{0}:ExtendedGridview>")]
     public class ExtendedGridview : GridView
     {
+        public bool EnableAlternating
+        { 
+            get {
+                if (ViewState["EnableAlternating"] == null)
+                    return true;
+                else
+                    return (bool)ViewState["EnableAlternating"];
+            }
+            set {
+                ViewState["EnableAlternating"] = value;
+            }
+        }
+
         public ExtendedGridview():base()
         {
         }
@@ -37,9 +50,11 @@ namespace Payroll.Web.Controls
             if (e.Row.RowType == DataControlRowType.DataRow)
             {
                 //e.Row.Cells[e.Row.Cells.Count-1].Width = new Unit("30px");
-
-                if (e.Row.RowState == DataControlRowState.Alternate)
-                    e.Row.CssClass = "gridAlternating";
+                if (EnableAlternating)
+                {
+                    if (e.Row.RowState == DataControlRowState.Alternate)
+                        e.Row.CssClass = "gridAlternating";
+                }
 
                 // loop all data rows
                 foreach (DataControlFieldCell cell in e.Row.Cells)

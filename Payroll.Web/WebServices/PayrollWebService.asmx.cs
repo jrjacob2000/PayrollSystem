@@ -17,7 +17,7 @@ namespace Payroll.Web.WebServices
     {
 
         [WebMethod]
-        public string CreateTimeSheet(CreateTimeSheetRequest request)
+        public string CreateTimeSheet(TimeSheetRequest request)
         {
             DataAccess.Core.DATimeSheet service = new DataAccess.Core.DATimeSheet();
             DataAccess.EmployeeTimeSheet entity = new DataAccess.EmployeeTimeSheet();
@@ -40,15 +40,108 @@ namespace Payroll.Web.WebServices
                 if (entity.DateTimeOut.HasValue)
                     return ("Date time-in is required");
             }
-
-        
             
-            
-
             service.Create(entity);
             return "Saving successful";
 
         }
+
+        [WebMethod]
+        public string UpdateTimeSheet(TimeSheetRequest request)
+        {
+            DataAccess.Core.DATimeSheet service = new DataAccess.Core.DATimeSheet();
+            DataAccess.EmployeeTimeSheet entity = new DataAccess.EmployeeTimeSheet();
+
+            if (new Guid(request.Id) == Guid.Empty)
+                entity.Id = Guid.NewGuid();
+            else
+                entity.Id = new Guid(request.Id);
+
+            entity.EmployeeId = new Guid(request.EmpId);
+            entity.ReportedDate = DateTime.Parse(request.Date);
+            entity.DateTimeIn = DateTime.Parse(request.DateTimeIn);
+            entity.DateTimeOut = DateTime.Parse(request.DateTimeOut);
+
+            if (entity.DateTimeIn.HasValue)
+            {
+                if (entity.DateTimeIn.Value.Date != entity.ReportedDate)
+                    return ("Date time-in should be equal to Reported date");
+
+                if (entity.DateTimeOut < entity.DateTimeIn)
+                    return ("Date time-out cannot be less than Date time-in");
+            }
+            else
+            {
+                if (entity.DateTimeOut.HasValue)
+                    return ("Date time-in is required");
+            }
+
+            if (new Guid(request.Id) == Guid.Empty)
+                service.Create(entity);
+            else
+                service.Update(entity);
+
+            /*Return list of timesheet*/
+
+            var startDate = DateTime.Now.GetFirstDayOfWeek().Date.AddDays(1); ;
+
+            FormlessPage page = new FormlessPage();
+            var ctrl = (Payroll.Web.Pages.TimeSheet.TimeSheetList)page.LoadControl("~/Pages/TimeSheet/TimeSheetList.ascx");
+
+            ctrl.EmployeeId = new Guid(request.EmpId);
+            ctrl.StartDate = DateTime.Now.GetFirstDayOfWeek().Date.AddDays(1);
+
+            page.Controls.Add(ctrl);
+
+            return page.RenderPage();
+
+        }
+
+         [WebMethod]
+        public string GetTimeSheet(GetTimeSheetRequest request)
+        {
+            DataAccess.Core.DATimeSheet service = new DataAccess.Core.DATimeSheet();
+
+            var entity = service.GetById(new Guid(request.Id));
+
+
+            FormlessPage page = new FormlessPage();
+            var ctrl = (Payroll.Web.Pages.TimeSheet.Update)page.LoadControl("~/Pages/TimeSheet/Update.ascx");
+
+            ctrl.ReportedDate = request.ReportedDate.ToDate();
+            ctrl.EmployeeId = request.EmpId.ToString();
+            ctrl.Id = request.Id;
+            if (entity != null)
+            {                
+                ctrl.ReportedDate = entity.ReportedDate;
+                ctrl.DateTimeIn = entity.DateTimeIn;
+                ctrl.DateTimeOut = entity.DateTimeOut;
+            }
+           
+
+            page.Controls.Add(ctrl);
+
+            return page.RenderPage();
+           
+         }
+
+         [WebMethod]
+         public string GetTimeSheetList(GetTimeSheetRequest request)
+         {
+             DataAccess.Core.DATimeSheet service = new DataAccess.Core.DATimeSheet();
+             var startDate = DateTime.Now.GetFirstDayOfWeek().Date.AddDays(1); 
+
+             FormlessPage page = new FormlessPage();
+             var ctrl = (Payroll.Web.Pages.TimeSheet.TimeSheetList)page.LoadControl("~/Pages/TimeSheet/TimeSheetList.ascx");
+          
+             ctrl.EmployeeId = new Guid(request.EmpId);
+             ctrl.StartDate = DateTime.Now.GetFirstDayOfWeek().Date.AddDays(1); 
+                          
+             page.Controls.Add(ctrl);
+
+             return page.RenderPage();
+
+         }
 
         [WebMethod]
         public string CreateAddress(CreateAddressRequest request)
@@ -99,12 +192,21 @@ namespace Payroll.Web.WebServices
                    
     }
 
-    public class CreateTimeSheetRequest
+    public class TimeSheetRequest
     {
-        public string EmpId { get; set; }
+        public string Id { get; set; }
+        public string EmpId { get; set; }        
         public string Date {get;set;}
         public string DateTimeIn { get; set; }
         public string DateTimeOut { get; set; }
                    
+    }
+
+    public class GetTimeSheetRequest
+    {
+        public string Id { get; set; }
+        public string EmpId { get; set; }
+        public string ReportedDate { get; set; }
+        
     }
 }

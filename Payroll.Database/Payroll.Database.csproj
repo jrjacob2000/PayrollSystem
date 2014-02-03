@@ -51,7 +51,11 @@
     <Content Include="Scripts\1.00.00.0000\07_RoleCanPerform.sql" />
     <Content Include="Scripts\1.00.00.0000\08_insert_ReferenceData.sql" />
     <Content Include="Scripts\1.00.00.0000\09_Employee.sql" />
-    <Content Include="Scripts\1.00.00.0000\Create_EmployeeAddress.sql" />
+    <Content Include="Scripts\1.00.00.0000\11_EmployeeTimeSheet.sql" />
+    <Content Include="Scripts\1.00.00.0000\12_F_Calendar.sql" />
+    <Content Include="Scripts\1.00.00.0000\13_F_GetFirstDayOfWeek.sql" />
+    <Content Include="Scripts\1.00.00.0000\14_P_GetTimeSheetByEmployee.sql" />
+    <Content Include="Scripts\1.00.00.0000\10_Create_EmployeeAddress.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

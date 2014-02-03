@@ -21,8 +21,7 @@
   </form>
 </div>
 
-<div id='divOverlayContent'>
-</div>
+
 
 <script language ="javascript" type ="text/javascript">
     $.widget("ui.timespinner", $.ui.spinner, {

@@ -102,6 +102,8 @@
     <Content Include="App_Themes\default\skin1.skin" />
     <Content Include="Pages\TimeSheet\CreateTimeLog.ascx" />
     <Content Include="Pages\TimeSheet\Default.aspx" />
+    <Content Include="Pages\TimeSheet\TimeSheetList.ascx" />
+    <Content Include="Pages\TimeSheet\Update.ascx" />
     <Content Include="Pages\WebForm1.aspx" />
     <Content Include="Pages\WebForm2.aspx" />
     <Content Include="Scripts\jquery-ui-1.10.3\ui\globalize.js" />
@@ -327,6 +329,20 @@
     </Compile>
     <Compile Include="Pages\TimeSheet\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TimeSheet\TimeSheetList.ascx.cs">
+      <DependentUpon>TimeSheetList.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TimeSheet\TimeSheetList.ascx.designer.cs">
+      <DependentUpon>TimeSheetList.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\TimeSheet\Update.ascx.cs">
+      <DependentUpon>Update.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\TimeSheet\Update.ascx.designer.cs">
+      <DependentUpon>Update.ascx</DependentUpon>
     </Compile>
     <Compile Include="Pages\WebForm1.aspx.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>

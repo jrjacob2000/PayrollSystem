@@ -105,6 +105,13 @@ namespace Payroll.DataAccess
 				return this.GetTable<EmployeeTimeSheet>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.P_GetTimeSheetByEmployee")]
+		public ISingleResult<P_GetTimeSheetByEmployeeResult> GetTimeSheetByEmployee([global::System.Data.Linq.Mapping.ParameterAttribute(Name="EmployeeId", DbType="UniqueIdentifier")] System.Nullable<System.Guid> employeeId, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="StartDate", DbType="Date")] System.Nullable<System.DateTime> startDate, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndDate", DbType="Date")] System.Nullable<System.DateTime> endDate)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), employeeId, startDate, endDate);
+			return ((ISingleResult<P_GetTimeSheetByEmployeeResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Employee")]
@@ -1362,9 +1369,9 @@ namespace Payroll.DataAccess
 		
 		private System.DateTime _ReportedDate;
 		
-		private System.DateTime _DateTimeIn;
+		private System.Nullable<System.DateTime> _DateTimeIn;
 		
-		private System.DateTime _DateTimeOut;
+		private System.Nullable<System.DateTime> _DateTimeOut;
 		
 		private System.Nullable<bool> _IsDeleted;
 		
@@ -1380,9 +1387,9 @@ namespace Payroll.DataAccess
     partial void OnEmployeeIdChanged();
     partial void OnReportedDateChanging(System.DateTime value);
     partial void OnReportedDateChanged();
-    partial void OnDateTimeInChanging(System.DateTime value);
+    partial void OnDateTimeInChanging(System.Nullable<System.DateTime> value);
     partial void OnDateTimeInChanged();
-    partial void OnDateTimeOutChanging(System.DateTime value);
+    partial void OnDateTimeOutChanging(System.Nullable<System.DateTime> value);
     partial void OnDateTimeOutChanged();
     partial void OnIsDeletedChanging(System.Nullable<bool> value);
     partial void OnIsDeletedChanged();
@@ -1458,8 +1465,8 @@ namespace Payroll.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeIn", DbType="DateTime NOT NULL")]
-		public System.DateTime DateTimeIn
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeIn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateTimeIn
 		{
 			get
 			{
@@ -1478,8 +1485,8 @@ namespace Payroll.DataAccess
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeOut", DbType="DateTime NOT NULL")]
-		public System.DateTime DateTimeOut
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeOut", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateTimeOut
 		{
 			get
 			{
@@ -1569,6 +1576,140 @@ namespace Payroll.DataAccess
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	public partial class P_GetTimeSheetByEmployeeResult
+	{
+		
+		private System.Nullable<System.Guid> _id;
+		
+		private System.Nullable<System.Guid> _EmployeeId;
+		
+		private System.Nullable<System.DateTime> _ReportedDate;
+		
+		private System.Nullable<System.DateTime> _DateTimeIn;
+		
+		private System.Nullable<System.DateTime> _DateTimeOut;
+		
+		private System.Nullable<bool> _IsDeleted;
+		
+		private string _Remarks;
+		
+		public P_GetTimeSheetByEmployeeResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> id
+		{
+			get
+			{
+				return this._id;
+			}
+			set
+			{
+				if ((this._id != value))
+				{
+					this._id = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EmployeeId", DbType="UniqueIdentifier")]
+		public System.Nullable<System.Guid> EmployeeId
+		{
+			get
+			{
+				return this._EmployeeId;
+			}
+			set
+			{
+				if ((this._EmployeeId != value))
+				{
+					this._EmployeeId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ReportedDate", DbType="Date")]
+		public System.Nullable<System.DateTime> ReportedDate
+		{
+			get
+			{
+				return this._ReportedDate;
+			}
+			set
+			{
+				if ((this._ReportedDate != value))
+				{
+					this._ReportedDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeIn", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateTimeIn
+		{
+			get
+			{
+				return this._DateTimeIn;
+			}
+			set
+			{
+				if ((this._DateTimeIn != value))
+				{
+					this._DateTimeIn = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DateTimeOut", DbType="DateTime")]
+		public System.Nullable<System.DateTime> DateTimeOut
+		{
+			get
+			{
+				return this._DateTimeOut;
+			}
+			set
+			{
+				if ((this._DateTimeOut != value))
+				{
+					this._DateTimeOut = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_IsDeleted", DbType="Bit")]
+		public System.Nullable<bool> IsDeleted
+		{
+			get
+			{
+				return this._IsDeleted;
+			}
+			set
+			{
+				if ((this._IsDeleted != value))
+				{
+					this._IsDeleted = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="NVarChar(30)")]
+		public string Remarks
+		{
+			get
+			{
+				return this._Remarks;
+			}
+			set
+			{
+				if ((this._Remarks != value))
+				{
+					this._Remarks = value;
+				}
 			}
 		}
 	}

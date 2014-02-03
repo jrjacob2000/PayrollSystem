@@ -14,7 +14,7 @@
         <elementListCompartment Id="15a8339c-176e-4210-9158-9df53293eb2b" absoluteBounds="2.8899999999999997, 0.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 1.77005126953125); (2.875 : 1.77005126953125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 1.77005126953125); (2.875 : 1.77005126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PayrollDataContext/Employee/Employee_EmployeeAddress" />
       <nodes>
         <classShapeMoniker Id="e231468a-4be5-4b40-bf63-c310fabcce57" />
@@ -27,17 +27,17 @@
         <elementListCompartment Id="e524e44a-ff31-4b7c-b2b8-c0aa3f9fdd32" absoluteBounds="2.8899999999999997, 3.585, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="893257d6-2dc9-4e98-b365-95bed018999b" absoluteBounds="5.5, 0.625, 2, 1.9631982421875">
+    <classShape Id="0275781a-065d-40de-a9af-8b8cdf48234f" absoluteBounds="5.5, 0.75, 2, 1.9631982421875">
       <DataClassMoniker Name="/PayrollDataContext/EmployeeTimeSheet" />
       <nestedChildShapes>
-        <elementListCompartment Id="9fdcc11b-a827-4a68-a9b7-d980030bbe84" absoluteBounds="5.515, 1.085, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="7ca64874-a47a-4e88-9400-a3641a0ca4fc" absoluteBounds="5.515, 1.21, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 5.92226399739583); (6.5 : 5.92226399739583); (6.5 : 2.5881982421875)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 5.92226399739583); (6.5 : 5.92226399739583); (6.5 : 2.7131982421875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/PayrollDataContext/Employee/Employee_EmployeeTimeSheet" />
       <nodes>
         <classShapeMoniker Id="e231468a-4be5-4b40-bf63-c310fabcce57" />
-        <classShapeMoniker Id="893257d6-2dc9-4e98-b365-95bed018999b" />
+        <classShapeMoniker Id="0275781a-065d-40de-a9af-8b8cdf48234f" />
       </nodes>
     </associationConnector>
   </nestedChildShapes>

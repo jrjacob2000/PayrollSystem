@@ -31,30 +31,30 @@ namespace Payroll.Web.Pages.TimeSheet {
         protected global::System.Web.UI.HtmlControls.HtmlButton btnGo;
         
         /// <summary>
-        /// dialogTimeSheet control.
+        /// btnPrev control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Payroll.Web.Pages.TimeSheet.CreateTimeLog dialogTimeSheet;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnPrev;
         
         /// <summary>
-        /// grdTimeLog control.
+        /// btnNext control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Payroll.Web.Controls.ExtendedGridview grdTimeLog;
+        protected global::System.Web.UI.HtmlControls.HtmlButton btnNext;
         
         /// <summary>
-        /// Calendar1 control.
+        /// grdTimeSheet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Calendar Calendar1;
+        protected global::Payroll.Web.Pages.TimeSheet.TimeSheetList grdTimeSheet;
     }
 }
